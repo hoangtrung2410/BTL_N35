@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="667.0" prefWidth="861.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.btl_35.viewController.gui63v2">
+   <children>
+      <Label layoutX="13.0" layoutY="10.0" style="-fx-font-family: arial; -fx-font-size: 30;" text="Add from the question bank at the end" textFill="RED" />
+      <AnchorPane layoutX="5.0" layoutY="57.0" minHeight="0.0" minWidth="0.0" prefHeight="558.0" prefWidth="852.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="55.0">
+         <children>
+            <Label layoutX="28.0" layoutY="13.0" style="-fx-font-family: arial; -fx-font-size: 18;" text="Select a category :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Accordion layoutX="191.0" layoutY="26.0" />
+            <TextField fx:id="selectcategory" editable="false" layoutX="189.0" layoutY="9.0" prefHeight="27.0" prefWidth="240.0" style="-fx-font-family: arial; -fx-font-size: 16;" AnchorPane.leftAnchor="189.0" />
+            <TableView fx:id="showquestion" layoutX="14.0" layoutY="109.0" prefHeight="454.0" prefWidth="832.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.0">
+               <columns>
+                  <TableColumn prefWidth="715.9999809265137" />
+               </columns>
+            </TableView>
+            <GridPane fx:id="showQuestionGridPane" layoutX="23.0" layoutY="104.0" prefHeight="46.0" prefWidth="792.0">
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="720.8000732421875" minWidth="10.0" prefWidth="720.8000732421875" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="254.20001220703125" minWidth="10.0" prefWidth="83.99992675781255" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <VBox prefHeight="66.0" prefWidth="259.0" spacing="5.0" GridPane.columnIndex="1">
+                     <children>
+                        <Label prefHeight="16.0" prefWidth="88.0" style="-fx-font-family: arial; -fx-font-size: 15; -fx-font-color: #3399FF;" text="Question" textFill="#3399ff">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="46.0" prefWidth="19.0" spacing="5.0">
+                     <children>
+                        <SVGPath content="M0 0 L10 0 L5 8 Z" fill="#3399ff" scaleX="1.25" scaleY="1.25" />
+                        <CheckBox mnemonicParsing="false" scaleX="0.8" scaleY="0.8" />
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </GridPane>
+            <Accordion layoutX="14.0" layoutY="47.0" prefHeight="87.0" prefWidth="502.0">
+              <panes>
+                <TitledPane animated="false" style="-fx-font-family: arial; -fx-font-size: 16;" text="Search options" textFill="#3399ff">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+                           <children>
+                              <CheckBox fx:id="showall" layoutX="12.0" layoutY="4.0" mnemonicParsing="false" onAction="#showall" style="-fx-font-family: arial; -fx-font-size: 13;" text="Also show questions from subcategories" />
+                              <CheckBox disable="true" layoutX="12.0" layoutY="30.0" mnemonicParsing="false" style="-fx-font-family: arial; -fx-font-size: 13;" text="Also show old questions" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+              </panes>
+            </Accordion>
+         </children>
+      </AnchorPane>
+      <Button fx:id="addQuestion" layoutX="14.0" layoutY="617.0" mnemonicParsing="false" onAction="#addSelectedQuestion" style="-fx-background-color: #3399FF; -fx-font-family: arial; -fx-font-size: 20;" text="ADD SELECTED QUESTIONS TO THE QUIZ" textFill="WHITE" AnchorPane.bottomAnchor="10.0" />
+      <Button fx:id="cancel" layoutX="502.0" layoutY="630.0" mnemonicParsing="false" onAction="#returngui61" style="-fx-background-color: RED; -fx-font-family: arial; -fx-font-size: 20;" text="Cancel" textFill="WHITE" AnchorPane.bottomAnchor="10.0" />
+   </children>
+</AnchorPane>

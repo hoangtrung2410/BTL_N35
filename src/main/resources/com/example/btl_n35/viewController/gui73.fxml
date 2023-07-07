@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="861.0" style="-fx-background-color: #EEEEEE;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.btl_35.viewController.gui73">
+   <children>
+      <AnchorPane layoutX="-1.0" prefHeight="38.0" prefWidth="862.0" style="-fx-background-color: #3399FF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="TOP" layoutX="681.0" layoutY="4.0" prefHeight="46.0" prefWidth="91.0" style="-fx-font-family: arial; -fx-font-size: 18;" text="Nguyễn" textAlignment="CENTER" textFill="WHITE" AnchorPane.rightAnchor="88.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <VBox alignment="CENTER" layoutX="14.0" layoutY="2.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="40.0" AnchorPane.leftAnchor="14.0">
+               <children>
+                  <SVGPath content="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" fill="WHITE" scaleX="0.07" scaleY="0.07">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </SVGPath>
+               </children>
+            </VBox>
+            <MenuButton contentDisplay="TOP" layoutX="778.0" layoutY="9.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="67.0" style="-fx-background-color: #3399FF; -fx-font-family: arial; -fx-font-size: 16;" textFill="#3399ff" AnchorPane.rightAnchor="15.799999999999997">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Thông tin cá nhân" />
+                  <MenuItem mnemonicParsing="false" text="Đăng xuất" />
+               </items>
+            </MenuButton>
+            <VBox alignment="CENTER" layoutX="775.0" layoutY="1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="40.0" AnchorPane.rightAnchor="46.0">
+               <children>
+                  <SVGPath content="M406.5 399.6C387.4 352.9 341.5 320 288 320H224c-53.5 0-99.4 32.9-118.5 79.6C69.9 362.2 48 311.7 48 256C48 141.1 141.1 48 256 48s208 93.1 208 208c0 55.7-21.9 106.2-57.5 143.6zm-40.1 32.7C334.4 452.4 296.6 464 256 464s-78.4-11.6-110.5-31.7c7.3-36.7 39.7-64.3 78.5-64.3h64c38.8 0 71.2 27.6 78.5 64.3zM256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-272a40 40 0 1 1 0-80 40 40 0 1 1 0 80zm-88-40a88 88 0 1 0 176 0 88 88 0 1 0 -176 0z" fill="WHITE" scaleX="0.07" scaleY="0.07" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="7.0" layoutY="62.0" prefHeight="116.0" prefWidth="850.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC;" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="849.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+               <children>
+                  <Button mnemonicParsing="false" style="-fx-background-color: white; -fx-font-family: arial; -fx-font-size: 16;" text="Home" textFill="RED" />
+                  <Label style="-fx-font-family: arial; -fx-font-color: #ff0000; -fx-font-size: 16;" text="/" />
+                  <Button mnemonicParsing="false" style="-fx-background-color: white; -fx-font-family: arial; -fx-font-size: 16;" text="My courses" />
+                  <Label style="-fx-font-family: arial; -fx-font-color: #ff0000; -fx-font-size: 16;" text="/" />
+                  <Button mnemonicParsing="false" style="-fx-background-color: white; -fx-font-family: arial; -fx-font-size: 16;" text="THI CUỐI KỲ" textFill="RED" />
+                  <Label style="-fx-font-family: arial; -fx-font-color: #ff0000; -fx-font-size: 16;" text="/" />
+                  <Button layoutX="79.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-font-family: arial; -fx-font-size: 16;" text="General" textFill="RED" />
+                  <Label fx:id="show1" style="-fx-font-family: arial; -fx-font-color: #ff0000; -fx-font-size: 16;" text="/" />
+
+                  <Button fx:id="quiz" layoutX="309.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-font-family: arial; -fx-font-size: 16;" text="General" textFill="RED" />
+
+                  <Label style="-fx-font-family: arial; -fx-font-color: #ff0000; -fx-font-size: 16;" text="/" />
+                  <Button layoutX="309.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-font-family: arial; -fx-font-size: 16;" text="Preview" textFill="RED" />
+               </children>
+            </HBox>
+            <Label alignment="CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="1.0" prefHeight="57.0" prefWidth="46.0" style="-fx-font-family: arial; -fx-font-size: 50;" text="IT" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="7.0" layoutY="192.0" prefHeight="462.0" prefWidth="848.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC;" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="185.0">
+         <children>
+            <ScrollPane fx:id="quizPane" layoutX="6.0" layoutY="80.0" prefHeight="1200.0" prefWidth="649.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="195.0" AnchorPane.topAnchor="79.0">
+               <content>
+                  <AnchorPane fx:id="anchorInfoPane" minHeight="0.0" minWidth="0.0" prefHeight="11996.0" prefWidth="630.0" style="-fx-background-color: white;">
+                     <children>
+                        <VBox fx:id="questionContainer" prefHeight="6000.0" prefWidth="670.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+            <AnchorPane layoutX="686.0" layoutY="7.0" prefHeight="429.0" prefWidth="178.0" style="-fx-border-color: #8c8c8c; -fx-background-color: white;" AnchorPane.bottomAnchor="43.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
+               <children>
+                  <Button fx:id="finishQuiz" layoutX="23.0" layoutY="373.0" mnemonicParsing="false" onAction="#finish" style="-fx-background-color: white;" text="Finish attempt..." AnchorPane.bottomAnchor="25.0" />
+                  <Label layoutX="5.0" layoutY="10.0" style="-fx-font-family: arial;" text="Quiz navigation" textFill="#d11616">
+                     <font>
+                        <Font name="Sitka Small" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="backHome" layoutX="18.0" layoutY="376.8" mnemonicParsing="false" onAction="#backHome" prefHeight="31.0" prefWidth="116.0" style="-fx-background-color: white; -fx-font-family: arial; -fx-font-size: 16;" text="Finish review" AnchorPane.bottomAnchor="24.0" />
+                  <GridPane fx:id="gridPane" hgap="2.0" layoutX="4.0" layoutY="34.0" prefHeight="339.0" prefWidth="145.0" vgap="2.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="34.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.4" minHeight="10.0" prefHeight="30.4" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.39999999999999" minHeight="10.0" prefHeight="30.39999999999999" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="dongho" layoutX="376.0" layoutY="11.0" prefHeight="46.0" prefWidth="276.0" style="-fx-border-color: red;" AnchorPane.rightAnchor="195.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="15.0" text="Time left :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="quiztime" layoutX="88.0" layoutY="15.0" prefHeight="20.0" prefWidth="178.0" text="Label">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
