@@ -9,7 +9,7 @@
 
 
 
-        <property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;databaseName=BTL_N35</property>
+        <property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;databaseName=88888</property>
 
 
         <property name="hibernate.connection.username">sa</property>
@@ -21,13 +21,13 @@
         <property name="show_sql">true</property>
 
         <!-- Mapping -->
-        <mapping class="com.example.btl_n35.entity.Question"/>
-        <mapping class="com.example.btl_n35.entity.Answer"/>
-        <mapping class="com.example.btl_n35.entity.Quiz"/>
-        <mapping class="com.example.btl_n35.entity.Category"/>
-        <mapping class="com.example.btl_n35.entity.User"/>
-        <mapping class="com.example.btl_n35.entity.User_Quiz"/>
-        <mapping class="com.example.btl_n35.entity.Media"/>
+        <mapping class="com.example.btl_35.entity.Question"/>
+        <mapping class="com.example.btl_35.entity.Answer"/>
+        <mapping class="com.example.btl_35.entity.Quiz"/>
+        <mapping class="com.example.btl_35.entity.Category"/>
+        <mapping class="com.example.btl_35.entity.User"/>
+        <mapping class="com.example.btl_35.entity.User_Quiz"/>
+        <mapping class="com.example.btl_35.entity.Media"/>
 
     </session-factory>
 </hibernate-configuration>
