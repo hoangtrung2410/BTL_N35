@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="59.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.btl_35.viewController.answer">
+   <children>
+      <TextField fx:id="answerTextField" editable="false" layoutX="152.0" layoutY="15.0" prefHeight="30.0" prefWidth="429.0" text="Câu trả lời đúng là: " AnchorPane.leftAnchor="152.0" AnchorPane.rightAnchor="19.0" />
+   </children>
+</AnchorPane>

@@ -31,6 +31,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.time.Duration;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -78,16 +79,16 @@ public class gui32v2 {
     @FXML
     private ImageView imageview;
     @FXML
-    private WebView gifview;
-    @FXML
     private SVGPath chamthan1;
     @FXML
     private SVGPath chamthan2;
-
+    @FXML
+    private Button replay;
     @FXML
     private SVGPath chamthan3;
     private File selectedImageFile;
     private String newImagepath;
+    private MediaPlayer mediaPlayer;
     public void setCategoryName2(String categoryName2) {
         selectedcategory2.setText(categoryName2);
     }
@@ -186,6 +187,13 @@ public class gui32v2 {
 
     }
     @FXML
+    void replayAction(ActionEvent event) {
+        if (mediaPlayer != null) {
+            mediaPlayer.seek(javafx.util.Duration.ZERO);
+            mediaPlayer.play();
+        }
+    }
+    @FXML
     void saveimage1(ActionEvent event) {
         if (selectedImageFile != null) {
             String fileName = selectedImageFile.getName();
@@ -203,16 +211,13 @@ public class gui32v2 {
                 System.out.println("image đã được sao chép vào: " + newimagepath);
                 this.newImagepath = newimagepath.toString();
                 if(fileExtension.equalsIgnoreCase("mp4")) {
+                    replay.setVisible(true);
                     // Tạo đối tượng MediaPlayer
                     javafx.scene.media.Media media = new javafx.scene.media.Media(selectedImageFile.toURI().toString());
                     MediaPlayer mediaPlayer = new MediaPlayer(media);
                     // Gán MediaPlayer vào MediaView để hiển thị video
                     preview.setMediaPlayer(mediaPlayer);
-                    mediaPlayer.setAutoPlay(true);
-                }
-                else if (fileExtension.equalsIgnoreCase("gif")){
-                    WebEngine webEngine = gifview.getEngine();
-                    webEngine.loadContent("<img src=\"" + selectedImageFile.toURI().toString() + "\">");
+                    this.mediaPlayer = mediaPlayer;
                 }
                 else{
                     // Hiển thị hình ảnh trong ImageView
@@ -232,6 +237,7 @@ public class gui32v2 {
     void deleteimage1(ActionEvent event) {
         imagepath.clear();
         selectedImageFile = null;
+        replay.setVisible(false);
         // Xóa video ở địa chỉ mới (nếu có)
         if (newImagepath != null) {
             File videoFile = new File(newImagepath);
@@ -241,7 +247,6 @@ public class gui32v2 {
                     System.out.println("Image đã được xóa: " + newImagepath);
                     preview.setMediaPlayer(null); // Remove media player from MediaView
                     imageview.setImage(null); // Clear the image in ImageView
-                    gifview.getEngine().loadContent(""); // Clear the content in WebView
                     newImagepath = null;
                 } else {
                     System.out.println("Không thể xóa Image: " + newImagepath);
@@ -419,5 +424,8 @@ public class gui32v2 {
     }
     private void disablechamthan3(boolean disable) {
         chamthan3.setVisible(disable);
+    }
+    private void disablereplay(boolean disable) {
+        replay.setVisible(disable);
     }
 }

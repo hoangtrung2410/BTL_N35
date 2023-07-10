@@ -92,6 +92,12 @@ public class gui73 {
         backHome.setVisible(false);
         quizPane.widthProperty().addListener((observable, oldVal, newVal) ->{
             anchorInfoPane.setPrefWidth(newVal.doubleValue());
+            if(questionContainer.getChildren().size() > 0){
+                for(Node pane : questionContainer.getChildren()){
+                    AnchorPane anchorPane = (AnchorPane) pane;
+                    anchorPane.setPrefWidth(newVal.doubleValue()-15);
+                }
+            }
         });
     }
 
@@ -289,6 +295,14 @@ public class gui73 {
             questionContainer.getChildren().add(0, finishpane);
             finishQuiz.setVisible(false);
             backHome.setVisible(true);
+            for (int i = 0; i < questions.size(); i++){
+                int index = 2*i+2;
+                FXMLLoader newloader = new FXMLLoader(getClass().getResource("answer.fxml"));
+                AnchorPane answerPane = newloader.load();
+                answer newcontroller = newloader.getController();
+                newcontroller.setCurrentQuestion(questions.get(i));
+                questionContainer.getChildren().add(index, answerPane);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

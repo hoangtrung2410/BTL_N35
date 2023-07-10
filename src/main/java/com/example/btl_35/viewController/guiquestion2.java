@@ -1,7 +1,9 @@
 package com.example.btl_35.viewController;
 
 import com.example.btl_35.entity.Question;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -13,13 +15,12 @@ import javafx.scene.web.WebView;
 import java.io.File;
 
 public class guiquestion2 {
-
+    @FXML
+    private Button replay;
     @FXML
     private Label questionContent;
-
     @FXML
     private Label questionNumber;
-
     @FXML
     private CheckBox answer1;
     @FXML
@@ -30,9 +31,7 @@ public class guiquestion2 {
     private ImageView imageView;
     @FXML
     private MediaView mediaView;
-    @FXML
-    private WebView gifView;
-
+    private MediaPlayer mediaPlayer;
     private Question question;
     public void setQuestion(Question question){
         this.question = question;
@@ -44,33 +43,25 @@ public class guiquestion2 {
         String fileExtension = getFileExtension(contentFile);
         if(fileExtension.equalsIgnoreCase("mp4")){
             setVideo(contentFile);
-        } else if (fileExtension.equalsIgnoreCase("png") || fileExtension.equalsIgnoreCase("jpg")){
-            setImage(contentFile);
         } else {
-            setGIF(contentFile);
+            setImage(contentFile);
         }
     }
     private void setImage(File contentFile){
         mediaView.setVisible(false);
-        gifView.setVisible(false);
         ImageView image = new ImageView(contentFile.toURI().toString());
         imageView.setImage(image.getImage());
     }
     private void setVideo(File contentFile){
         imageView.setVisible(false);
-        gifView.setVisible(false);
+        replay.setVisible(true);
         javafx.scene.media.Media media = new javafx.scene.media.Media(contentFile.toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         // Gán MediaPlayer vào MediaView để hiển thị video
         mediaView.setMediaPlayer(mediaPlayer);
-        mediaPlayer.setAutoPlay(true);
+        this.mediaPlayer = mediaPlayer;
     }
-    private void setGIF(File contentFile){
-        imageView.setVisible(false);
-        mediaView.setVisible(false);
-        WebEngine webEngine = gifView.getEngine();
-        webEngine.loadContent("<img src=\"" + contentFile.toURI().toString() + "\">");
-    }
+
     private String getFileExtension(File file) {
         String extension = "";
         String fileName = file.getName();
@@ -79,5 +70,12 @@ public class guiquestion2 {
             extension = fileName.substring(dotIndex + 1).toLowerCase();
         }
         return extension;
+    }
+    @FXML
+    void replayAction(ActionEvent event) {
+        if (mediaPlayer != null) {
+            mediaPlayer.seek(javafx.util.Duration.ZERO);
+            mediaPlayer.play();
+        }
     }
 }
