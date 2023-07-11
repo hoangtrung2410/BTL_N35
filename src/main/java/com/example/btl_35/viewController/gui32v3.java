@@ -150,6 +150,12 @@ public class gui32v3 {
     @FXML
     private ComboBox<String> grade3;
     @FXML
+    private ComboBox<String> grade4;
+    @FXML
+    private ComboBox<String> grade5;
+    @FXML
+    private ComboBox<String> grade6;
+    @FXML
     private Button image32;
     @FXML
     private TextField questionName32;
@@ -181,6 +187,12 @@ public class gui32v3 {
     private SVGPath chamthan3;
     private File selectedImageFile;
     private String newImagepath;
+    private String newImagepath1;
+    private String newImagepath2;
+    private String newImagepath3;
+    private String newImagepath4;
+    private String newImagepath5;
+    private String newImagepath6;
     private MediaPlayer mediaPlayer;
     public void setCategoryName2(String categoryName2) {
         selectedcategory2.setText(categoryName2);
@@ -475,7 +487,7 @@ public class gui32v3 {
                 Path newimagepath = new File(destinationDir, imageFileName).toPath();
                 Files.copy(selectedImageFile.toPath(), newimagepath, StandardCopyOption.REPLACE_EXISTING);
                 System.out.println("image đã được sao chép vào: " + newimagepath);
-                this.newImagepath = newimagepath.toString();
+                this.newImagepath1 = newimagepath.toString();
                 // Hiển thị hình ảnh trong ImageView
                 ImageView image = new ImageView(selectedImageFile.toURI().toString());
                 imageview1.setImage(image.getImage());
@@ -504,7 +516,7 @@ public class gui32v3 {
                 Path newimagepath = new File(destinationDir, imageFileName).toPath();
                 Files.copy(selectedImageFile.toPath(), newimagepath, StandardCopyOption.REPLACE_EXISTING);
                 System.out.println("image đã được sao chép vào: " + newimagepath);
-                this.newImagepath = newimagepath.toString();
+                this.newImagepath2 = newimagepath.toString();
                 // Hiển thị hình ảnh trong ImageView
                 ImageView image = new ImageView(selectedImageFile.toURI().toString());
                 imageview2.setImage(image.getImage());
@@ -533,7 +545,7 @@ public class gui32v3 {
                 Path newimagepath = new File(destinationDir, imageFileName).toPath();
                 Files.copy(selectedImageFile.toPath(), newimagepath, StandardCopyOption.REPLACE_EXISTING);
                 System.out.println("image đã được sao chép vào: " + newimagepath);
-                this.newImagepath = newimagepath.toString();
+                this.newImagepath3 = newimagepath.toString();
                 // Hiển thị hình ảnh trong ImageView
                 ImageView image = new ImageView(selectedImageFile.toURI().toString());
                 imageview3.setImage(image.getImage());
@@ -561,7 +573,7 @@ public class gui32v3 {
                 Path newimagepath = new File(destinationDir, imageFileName).toPath();
                 Files.copy(selectedImageFile.toPath(), newimagepath, StandardCopyOption.REPLACE_EXISTING);
                 System.out.println("image đã được sao chép vào: " + newimagepath);
-                this.newImagepath = newimagepath.toString();
+                this.newImagepath4 = newimagepath.toString();
                 // Hiển thị hình ảnh trong ImageView
                 ImageView image = new ImageView(selectedImageFile.toURI().toString());
                 imageview4.setImage(image.getImage());
@@ -590,7 +602,7 @@ public class gui32v3 {
                 Path newimagepath = new File(destinationDir, imageFileName).toPath();
                 Files.copy(selectedImageFile.toPath(), newimagepath, StandardCopyOption.REPLACE_EXISTING);
                 System.out.println("image đã được sao chép vào: " + newimagepath);
-                this.newImagepath = newimagepath.toString();
+                this.newImagepath5 = newimagepath.toString();
                 // Hiển thị hình ảnh trong ImageView
                 ImageView image = new ImageView(selectedImageFile.toURI().toString());
                 imageview5.setImage(image.getImage());
@@ -619,7 +631,7 @@ public class gui32v3 {
                 Path newimagepath = new File(destinationDir, imageFileName).toPath();
                 Files.copy(selectedImageFile.toPath(), newimagepath, StandardCopyOption.REPLACE_EXISTING);
                 System.out.println("image đã được sao chép vào: " + newimagepath);
-                this.newImagepath = newimagepath.toString();
+                this.newImagepath6 = newimagepath.toString();
                 // Hiển thị hình ảnh trong ImageView
                 ImageView image = new ImageView(selectedImageFile.toURI().toString());
                 imageview6.setImage(image.getImage());
@@ -659,14 +671,14 @@ public class gui32v3 {
         imagepath1.clear();
         selectedImageFile = null;
         // Xóa video ở địa chỉ mới (nếu có)
-        if (newImagepath != null) {
-            File videoFile = new File(newImagepath);
-            System.out.println("Image đã được xóa: " + newImagepath);
+        if (newImagepath1 != null) {
+            File videoFile = new File(newImagepath1);
+            System.out.println("Image đã được xóa: " + newImagepath1);
             imageview1.setImage(null); // Clear the image in ImageView
         } else {
-            System.out.println("Không thể xóa Image: " + newImagepath);
+            System.out.println("Không thể xóa Image: " + newImagepath1);
         }
-        newImagepath = null;
+        newImagepath1 = null;
     }
 
 
@@ -675,69 +687,69 @@ public class gui32v3 {
         imagepath2.clear();
         selectedImageFile = null;
         // Xóa video ở địa chỉ mới (nếu có)
-        if (newImagepath != null) {
-            File videoFile = new File(newImagepath);
-            System.out.println("Image đã được xóa: " + newImagepath);
+        if (newImagepath2 != null) {
+            File videoFile = new File(newImagepath2);
+            System.out.println("Image đã được xóa: " + newImagepath2);
             imageview2.setImage(null); // Clear the image in ImageView
         } else {
-            System.out.println("Không thể xóa Image: " + newImagepath);
+            System.out.println("Không thể xóa Image: " + newImagepath2);
         }
-        newImagepath = null;
+        newImagepath2 = null;
     }
 
     @FXML
     void deleteimage3(ActionEvent event) {
         imagepath3.clear();
         selectedImageFile = null;
-        if (newImagepath != null) {
-            File videoFile = new File(newImagepath);
-            System.out.println("Image đã được xóa: " + newImagepath);
+        if (newImagepath3 != null) {
+            File videoFile = new File(newImagepath3);
+            System.out.println("Image đã được xóa: " + newImagepath3);
             imageview3.setImage(null); // Clear the image in ImageView
         } else {
-            System.out.println("Không thể xóa Image: " + newImagepath);
+            System.out.println("Không thể xóa Image: " + newImagepath3);
         }
-        newImagepath = null;
+        newImagepath3 = null;
     }
     @FXML
     void deleteimage4(ActionEvent event) {
         imagepath4.clear();
         selectedImageFile = null;
-        if (newImagepath != null) {
-            File videoFile = new File(newImagepath);
-            System.out.println("Image đã được xóa: " + newImagepath);
+        if (newImagepath4 != null) {
+            File videoFile = new File(newImagepath4);
+            System.out.println("Image đã được xóa: " + newImagepath4);
             imageview4.setImage(null); // Clear the image in ImageView
         } else {
-            System.out.println("Không thể xóa Image: " + newImagepath);
+            System.out.println("Không thể xóa Image: " + newImagepath4);
         }
-        newImagepath = null;
+        newImagepath4 = null;
     }
 
     @FXML
     void deleteimage5(ActionEvent event) {
         imagepath5.clear();
         selectedImageFile = null;
-        if (newImagepath != null) {
-            File videoFile = new File(newImagepath);
-            System.out.println("Image đã được xóa: " + newImagepath);
+        if (newImagepath5 != null) {
+            File videoFile = new File(newImagepath5);
+            System.out.println("Image đã được xóa: " + newImagepath5);
             imageview5.setImage(null); // Clear the image in ImageView
         } else {
-            System.out.println("Không thể xóa Image: " + newImagepath);
+            System.out.println("Không thể xóa Image: " + newImagepath5);
         }
-        newImagepath = null;
+        newImagepath5 = null;
     }
 
     @FXML
     void deleteimage6(ActionEvent event) {
         imagepath6.clear();
         selectedImageFile = null;
-        if (newImagepath != null) {
-            File videoFile = new File(newImagepath);
-            System.out.println("Image đã được xóa: " + newImagepath);
+        if (newImagepath6 != null) {
+            File videoFile = new File(newImagepath6);
+            System.out.println("Image đã được xóa: " + newImagepath6);
             imageview6.setImage(null); // Clear the image in ImageView
         } else {
-            System.out.println("Không thể xóa Image: " + newImagepath);
+            System.out.println("Không thể xóa Image: " + newImagepath6);
         }
-        newImagepath = null;
+        newImagepath6 = null;
     }
     public void initialize() {
         // Listen to changes in the quiz name field
@@ -762,10 +774,16 @@ public class gui32v3 {
         grade1.setItems(gradeList);
         grade2.setItems(gradeList);
         grade3.setItems(gradeList);
+        grade4.setItems(gradeList);
+        grade5.setItems(gradeList);
+        grade6.setItems(gradeList);
         // Mặc định ComboBox là "None"
         grade1.setValue("None");
         grade2.setValue("None");
         grade3.setValue("None");
+        grade4.setValue("None");
+        grade5.setValue("None");
+        grade6.setValue("None");
         savechangesandcontinue.setOnMouseClicked(event -> {
             try {
                 Question question = new Question();
@@ -780,21 +798,38 @@ public class gui32v3 {
                 System.out.println("ok : "+newImagepath);
                 Set<Answer> answers = new HashSet<>();
                 if (!choice1.getText().isEmpty()) {
-                    Answer da1 = createAnswer(choice1.getText(), grade1.getValue(),imagepath1.getText());
+                    Answer da1 = createAnswer(choice1.getText(), grade1.getValue(),newImagepath1);
                     da1.setQuestion(question);
                     answers.add(da1);
                 }
                 if (!choice2.getText().isEmpty()) {
-                    Answer da2 = createAnswer(choice2.getText(), grade2.getValue(),imagepath2.getText());
+                    Answer da2 = createAnswer(choice2.getText(), grade2.getValue(),newImagepath2);
                     da2.setQuestion(question);
                     answers.add(da2);
                 }
                 if (!choice3.getText().isEmpty()) {
-                    Answer da3 = createAnswer(choice3.getText(), grade3.getValue(),imagepath3.getText());
+                    Answer da3 = createAnswer(choice3.getText(), grade3.getValue(),newImagepath3);
                     da3.setQuestion(question);
                     answers.add(da3);
                 }
-                question.setMedia(media);
+                if (!choice4.getText().isEmpty()) {
+                    Answer da1 = createAnswer(choice4.getText(), grade4.getValue(),newImagepath4);
+                    da1.setQuestion(question);
+                    answers.add(da1);
+                }
+                if (!choice5.getText().isEmpty()) {
+                    Answer da2 = createAnswer(choice5.getText(), grade5.getValue(),newImagepath5);
+                    da2.setQuestion(question);
+                    answers.add(da2);
+                }
+                if (!choice6.getText().isEmpty()) {
+                    Answer da3 = createAnswer(choice6.getText(), grade6.getValue(),newImagepath6);
+                    da3.setQuestion(question);
+                    answers.add(da3);
+                }
+                if(media.getUrl()!=null){
+                    question.setMedia(media);
+                }
                 question.setAnswers(answers);
                 QuestionDao.getInstance().insert(question);
                 gui32Ok2();
@@ -817,21 +852,38 @@ public class gui32v3 {
                 System.out.println("ok : "+newImagepath);
                 Set<Answer> answers = new HashSet<>();
                 if (!choice1.getText().isEmpty()) {
-                    Answer da1 = createAnswer(choice1.getText(), grade1.getValue(),imagepath1.getText());
+                    Answer da1 = createAnswer(choice1.getText(), grade1.getValue(),newImagepath1);
                     da1.setQuestion(question);
                     answers.add(da1);
                 }
                 if (!choice2.getText().isEmpty()) {
-                    Answer da2 = createAnswer(choice2.getText(), grade2.getValue(),imagepath2.getText());
+                    Answer da2 = createAnswer(choice2.getText(), grade2.getValue(),newImagepath2);
                     da2.setQuestion(question);
                     answers.add(da2);
                 }
                 if (!choice3.getText().isEmpty()) {
-                    Answer da3 = createAnswer(choice3.getText(), grade3.getValue(),imagepath3.getText());
+                    Answer da3 = createAnswer(choice3.getText(), grade3.getValue(),newImagepath3);
                     da3.setQuestion(question);
                     answers.add(da3);
                 }
-                question.setMedia(media);
+                if (!choice4.getText().isEmpty()) {
+                    Answer da1 = createAnswer(choice4.getText(), grade4.getValue(),newImagepath4);
+                    da1.setQuestion(question);
+                    answers.add(da1);
+                }
+                if (!choice5.getText().isEmpty()) {
+                    Answer da2 = createAnswer(choice5.getText(), grade5.getValue(),newImagepath5);
+                    da2.setQuestion(question);
+                    answers.add(da2);
+                }
+                if (!choice6.getText().isEmpty()) {
+                    Answer da3 = createAnswer(choice6.getText(), grade6.getValue(),newImagepath6);
+                    da3.setQuestion(question);
+                    answers.add(da3);
+                }
+                if(media.getUrl()!=null){
+                    question.setMedia(media);
+                }
                 question.setAnswers(answers);
                 QuestionDao.getInstance().insert(question);
                 gui32Ok();
