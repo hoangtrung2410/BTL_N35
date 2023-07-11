@@ -21,6 +21,17 @@ public class Answer {
 	@ManyToOne()
 	@JoinColumn(name = "question_id", referencedColumnName = "question_id")
 	private Question question;
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name = "media_id")
+	private Media media;
+
+	public Media getMedia() {
+		return media;
+	}
+
+	public void setMedia(Media media) {
+		this.media = media;
+	}
 
 	public Answer() {
 	}

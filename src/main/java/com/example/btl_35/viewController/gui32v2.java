@@ -511,7 +511,7 @@ public class gui32v2 {
         // Tạo danh sách các mức điểm từ 100% đến -83.33%
         ObservableList<String> gradeList = FXCollections.observableArrayList(
                 "100%", "90%","83.33333%" ,"80%","75%" ,"70%","66.66667%" ,"60%", "50%", "40%", "33.33333%","30%","25%" ,"20%","16.66667%","14.28571%","12.5%","11.11111%" ,"10%",
-                "5%", "0%", "-5%", "-10%","-11.11111%","-12.5%","-14.28571%","-15%","-16.66667%", "-20%", "-25%", "-30%","-33.33333%", "-40%",
+                "5%", "-5%", "-10%","-11.11111%","-12.5%","-14.28571%","-15%","-16.66667%", "-20%", "-25%", "-30%","-33.33333%", "-40%",
                 "-50%", "-60%","-70%", "-75%", "-80%", "-83.33333%"
         );
         // Gán danh sách mức điểm vào ComboBox
@@ -536,17 +536,17 @@ public class gui32v2 {
                 System.out.println("ok : "+newImagepath);
                 Set<Answer> answers = new HashSet<>();
                 if (!choice1.getText().isEmpty()) {
-                    Answer da1 = createAnswer(choice1.getText(), grade1.getValue());
+                    Answer da1 = createAnswer(choice1.getText(), grade1.getValue(),imagepath1.getText());
                     da1.setQuestion(question);
                     answers.add(da1);
                 }
                 if (!choice2.getText().isEmpty()) {
-                    Answer da2 = createAnswer(choice2.getText(), grade2.getValue());
+                    Answer da2 = createAnswer(choice2.getText(), grade2.getValue(),imagepath2.getText());
                     da2.setQuestion(question);
                     answers.add(da2);
                 }
                 if (!choice3.getText().isEmpty()) {
-                    Answer da3 = createAnswer(choice3.getText(), grade3.getValue());
+                    Answer da3 = createAnswer(choice3.getText(), grade3.getValue(),imagepath3.getText());
                     da3.setQuestion(question);
                     answers.add(da3);
                 }
@@ -573,17 +573,17 @@ public class gui32v2 {
                 System.out.println("ok : "+newImagepath);
                 Set<Answer> answers = new HashSet<>();
                 if (!choice1.getText().isEmpty()) {
-                    Answer da1 = createAnswer(choice1.getText(), grade1.getValue());
+                    Answer da1 = createAnswer(choice1.getText(), grade1.getValue(),imagepath1.getText());
                     da1.setQuestion(question);
                     answers.add(da1);
                 }
                 if (!choice2.getText().isEmpty()) {
-                    Answer da2 = createAnswer(choice2.getText(), grade2.getValue());
+                    Answer da2 = createAnswer(choice2.getText(), grade2.getValue(),imagepath2.getText());
                     da2.setQuestion(question);
                     answers.add(da2);
                 }
                 if (!choice3.getText().isEmpty()) {
-                    Answer da3 = createAnswer(choice3.getText(), grade3.getValue());
+                    Answer da3 = createAnswer(choice3.getText(), grade3.getValue(),imagepath3.getText());
                     da3.setQuestion(question);
                     answers.add(da3);
                 }
@@ -609,8 +609,11 @@ public class gui32v2 {
         }
         return extension;
     }
-    public static Answer createAnswer(String choiceText, String gradeInput) {
+    public static Answer createAnswer(String choiceText, String gradeInput,String imagepath) {
+        Media media = new Media();
+        media.setUrl(imagepath);
         Answer answer = new Answer();
+        answer.setMedia(media);
         answer.setChoice(choiceText);
         String numberString = gradeInput.replaceAll("%", "");
         double number = Double.parseDouble(numberString) / 100.0;

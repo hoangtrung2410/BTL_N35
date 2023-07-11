@@ -16,6 +16,16 @@ public class Media {
 //	private Question questions;
 	@OneToOne(mappedBy = "media",cascade = CascadeType.ALL)
 	private Question question;
+	@OneToOne(mappedBy = "media",cascade = CascadeType.ALL)
+	private Answer answer;
+
+	public Answer getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(Answer answer) {
+		this.answer = answer;
+	}
 
 	public Media() {
 	}
