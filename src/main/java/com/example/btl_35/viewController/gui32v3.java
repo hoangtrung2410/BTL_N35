@@ -813,17 +813,17 @@ public class gui32v3 {
                     answers.add(da3);
                 }
                 if (!choice4.getText().isEmpty()) {
-                    Answer da4 = createAnswer(choice1.getText(), grade1.getValue(),newImagepath4);
+                    Answer da4 = createAnswer(choice4.getText(), grade4.getValue(),newImagepath4);
                     da4.setQuestion(question);
                     answers.add(da4);
                 }
                 if (!choice5.getText().isEmpty()) {
-                    Answer da5 = createAnswer(choice2.getText(), grade2.getValue(),newImagepath5);
+                    Answer da5 = createAnswer(choice5.getText(), grade5.getValue(),newImagepath5);
                     da5.setQuestion(question);
                     answers.add(da5);
                 }
                 if (!choice6.getText().isEmpty()) {
-                    Answer da6 = createAnswer(choice3.getText(), grade3.getValue(),newImagepath6);
+                    Answer da6 = createAnswer(choice6.getText(), grade6.getValue(),newImagepath6);
                     da6.setQuestion(question);
                     answers.add(da6);
                 }
@@ -865,17 +865,17 @@ public class gui32v3 {
                     answers.add(da3);
                 }
                 if (!choice4.getText().isEmpty()) {
-                    Answer da4 = createAnswer(choice1.getText(), grade1.getValue(),newImagepath4);
+                    Answer da4 = createAnswer(choice4.getText(), grade4.getValue(),newImagepath4);
                     da4.setQuestion(question);
                     answers.add(da4);
                 }
                 if (!choice5.getText().isEmpty()) {
-                    Answer da5 = createAnswer(choice2.getText(), grade2.getValue(),newImagepath5);
+                    Answer da5 = createAnswer(choice5.getText(), grade5.getValue(),newImagepath5);
                     da5.setQuestion(question);
                     answers.add(da5);
                 }
                 if (!choice6.getText().isEmpty()) {
-                    Answer da6 = createAnswer(choice3.getText(), grade3.getValue(),newImagepath6);
+                    Answer da6 = createAnswer(choice6.getText(), grade6.getValue(),newImagepath6);
                     da6.setQuestion(question);
                     answers.add(da6);
                 }
