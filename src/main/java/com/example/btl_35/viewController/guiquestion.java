@@ -18,4 +18,6 @@ public class guiquestion {
     private CheckBox answer2;
     @FXML
     private CheckBox answer3;
+    @FXML
+    private CheckBox answer4;
 }

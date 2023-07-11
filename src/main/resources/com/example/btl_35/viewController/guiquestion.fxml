@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,9 +15,10 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <CheckBox fx:id="answer1" layoutX="23.0" layoutY="81.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="434.0" style="-fx-font-family: arial; -fx-font-size: 14;" text="A" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" />
-            <CheckBox fx:id="answer2" layoutX="23.0" layoutY="121.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="498.0" style="-fx-font-family: arial; -fx-font-size: 14;" text="B" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" />
-            <CheckBox fx:id="answer3" layoutX="23.0" layoutY="163.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="434.0" style="-fx-font-family: arial; -fx-font-size: 14;" text="C" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" />
+            <CheckBox fx:id="answer1" layoutX="23.0" layoutY="81.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="1000.0" style="-fx-font-family: arial; -fx-font-size: 14;" text="A" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="20.0" />
+            <CheckBox fx:id="answer2" layoutX="20.0" layoutY="108.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="1000.0" style="-fx-font-family: arial; -fx-font-size: 14;" text="B" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="20.0" />
+            <CheckBox fx:id="answer3" layoutX="20.0" layoutY="136.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="1000.0" style="-fx-font-family: arial; -fx-font-size: 14;" text="C" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="20.0" />
+            <CheckBox fx:id="answer4" layoutX="20.0" layoutY="164.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="1000.0" style="-fx-font-family: arial; -fx-font-size: 14;" text="Khoản phí dùng để trang trải chi phí phát hành hợp đồng bảo hiểm, chi phí thẩm định bảo hiểm, chi phí kiểm tra y tế, chi hoa hồng đại lý và chi phí khác." AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="14.0" layoutY="18.0" prefHeight="174.0" prefWidth="112.0" style="-fx-border-color: #EEEEEE; -fx-background-color: white;">
@@ -38,7 +38,7 @@
                </children>
             </HBox>
             <Label layoutX="8.0" layoutY="117.0" style="-fx-font-family: arial;" text="Marked out of 1.00 " />
-            <Button layoutX="13.0" layoutY="137.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" style="-fx-font-family: arial; -fx-background-color: white; -fx-font-size: 12;" text="Flag question" />
+            <Label layoutX="8.0" layoutY="78.0" prefHeight="30.0" prefWidth="103.0" style="-fx-font-family: arial;" text=" Not yet answered" />
          </children>
       </AnchorPane>
    </children>

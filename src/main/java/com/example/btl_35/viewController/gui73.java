@@ -15,10 +15,7 @@ import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.media.MediaView;
@@ -31,10 +28,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class gui73 {
 
@@ -139,15 +133,16 @@ public class gui73 {
     void finish(ActionEvent event) {
         finish2();
     }
-    private Double calculateMark(Answer Answer1, Answer Answer2, Answer Answer3, Question question){
+    private Double calculateMark(Answer Answer1, Answer Answer2, Answer Answer3,Answer Answer4, Question question){
         double grade1 = (Answer1 == null ? 0.0 : Answer1.getGrade());
         double grade2 = (Answer2 == null ? 0.0 : Answer2.getGrade());
         double grade3 = (Answer3 == null ? 0.0 : Answer3.getGrade());
+        double grade4 = (Answer4 == null ? 0.0 : Answer4.getGrade());
         double grade;
-        if(grade1 >= 0 && grade2 >= 0 && grade3 >= 0){
-            grade = grade1 + grade2 + grade3;
+        if(grade1 >= 0 && grade2 >= 0 && grade3 >= 0 && grade4 >= 0){
+            grade = grade1 + grade2 + grade3 + grade4;
         } else {
-            grade = (grade1 < 0 ? grade1 : 0.0) + (grade2 < 0 ? grade2 : 0.0) + (grade3 < 0 ? grade3 : 0.0);
+            grade = (grade1 < 0 ? grade1 : 0.0) + (grade2 < 0 ? grade2 : 0.0) + (grade3 < 0 ? grade3 : 0.0)+ (grade4 < 0 ? grade4 : 0.0);
         }
         return (question.getMark() == null ? 1.00 : question.getMark()) * grade;
     }
@@ -180,13 +175,15 @@ public class gui73 {
             Label questionNumber = (Label) questionPane.lookup("#questionNumber");
 
             // Lay cac Check Box
-            List<CheckBox> checkBoxList = new ArrayList<>(3);
+            List<CheckBox> checkBoxList = new ArrayList<>(4);
             CheckBox answer1 = (CheckBox) questionPane.lookup("#answer1");
             CheckBox answer2 = (CheckBox) questionPane.lookup("#answer2");
             CheckBox answer3 = (CheckBox) questionPane.lookup("#answer3");
+            CheckBox answer4 = (CheckBox) questionPane.lookup("#answer4");
             checkBoxList.add(answer1);
             checkBoxList.add(answer2);
             checkBoxList.add(answer3);
+            checkBoxList.add(answer4);
 
             // Đặt nội dung và số thứ tự của câu hỏi trong các Label
             questionContent.setText(questions.get(i).getText());
@@ -195,10 +192,10 @@ public class gui73 {
             // Dat noi dung va hien thi checkbox
             List<Answer> answers = new ArrayList<>(questions.get(i).getAnswers());
             int answerCount = answers.size();
-            if (answerCount < 3){
+            if (answerCount < 4){
                 // 0, 1, 2
                 // neu so cau hoi it hon 3 thi an checkbox thua
-                for(int j = answerCount; j<3; j++){
+                for(int j = answerCount; j<4; j++){
                     checkBoxList.get(j).setVisible(false);
                 }
             }
@@ -238,73 +235,88 @@ public class gui73 {
         }
     }
     private void finish2(){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("finishpane.fxml"));
-            AnchorPane finishpane = loader.load();
-            // stop thoi gian
-            if(currentQuiz.getLimit_Time() != null){
-                timeline.stop();
-            }
-            quizPane.setVvalue(0.0);
-            // Cham diem
-            finishpane controller = loader.getController();
-            // get finish time
-            LocalTime finishLocalTime = LocalTime.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-            String finishTime = finishLocalTime.format(formatter);
-            // get startTime
-            String startTime = this.startTime.format(formatter);
-            // get time taken
-            java.time.Duration duration = java.time.Duration.between(this.startTime, finishLocalTime);
-            LocalTime localTime = LocalTime.ofNanoOfDay(duration.toNanos());
-            String timeTaken = localTime.format(formatter);
-            // calculate mark
-            Double quizMark = 0.0;
-            for (Question question : questions){
-                if(question.getMark() != null){
-                    quizMark += question.getMark();
-                } else {
-                    quizMark += 1.0;
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Xác nhận nạp bài");
+        alert.setHeaderText(null);
+        alert.setContentText("Bạn có muốn nạp bài không?");
+
+        ButtonType okButton = new ButtonType("Ok");
+        ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(okButton, cancelButton);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == okButton) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("finishpane.fxml"));
+                AnchorPane finishpane = loader.load();
+                // stop thoi gian
+                if (currentQuiz.getLimit_Time() != null) {
+                    timeline.stop();
                 }
-            }
-            double finalMark = 0.0;
-            for (int i = 0; i < questions.size(); i++){
-                int answerCount = 0;
-                // i as index of question in the questions list
-                // with each question, get the i-th anchor pane contain the answer
-                AnchorPane currentPane = (AnchorPane) questionContainer.getChildren().get(i);
-                Question currentQuestion = questions.get(i);
-                // now we check the box and get checked answer
-                CheckBox answer1 = (CheckBox) currentPane.lookup("#answer1");
-                CheckBox answer2 = (CheckBox) currentPane.lookup("#answer2");
-                CheckBox answer3 = (CheckBox) currentPane.lookup("#answer3");
-                Answer Answer1 = processCheckBox(answer1);
-                Answer Answer2 = processCheckBox(answer2);
-                Answer Answer3 = processCheckBox(answer3);
-                // now calculate the mark for each question
-                finalMark += calculateMark(Answer1, Answer2, Answer3, currentQuestion);
-            }
-            String mark = finalMark + "/" + quizMark;
+                quizPane.setVvalue(0.0);
+                // Cham diem
+                finishpane controller = loader.getController();
+                // get finish time
+                LocalTime finishLocalTime = LocalTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+                String finishTime = finishLocalTime.format(formatter);
+                // get startTime
+                String startTime = this.startTime.format(formatter);
+                // get time taken
+                java.time.Duration duration = java.time.Duration.between(this.startTime, finishLocalTime);
+                LocalTime localTime = LocalTime.ofNanoOfDay(duration.toNanos());
+                String timeTaken = localTime.format(formatter);
+                // calculate mark
+                Double quizMark = 0.0;
+                for (Question question : questions) {
+                    if (question.getMark() != null) {
+                        quizMark += question.getMark();
+                    } else {
+                        quizMark += 1.0;
+                    }
+                }
+                double finalMark = 0.0;
+                for (int i = 0; i < questions.size(); i++) {
+                    int answerCount = 0;
+                    // i as index of question in the questions list
+                    // with each question, get the i-th anchor pane contain the answer
+                    AnchorPane currentPane = (AnchorPane) questionContainer.getChildren().get(i);
+                    Question currentQuestion = questions.get(i);
+                    // now we check the box and get checked answer
+                    CheckBox answer1 = (CheckBox) currentPane.lookup("#answer1");
+                    CheckBox answer2 = (CheckBox) currentPane.lookup("#answer2");
+                    CheckBox answer3 = (CheckBox) currentPane.lookup("#answer3");
+                    CheckBox answer4 = (CheckBox) currentPane.lookup("#answer4");
+                    Answer Answer1 = processCheckBox(answer1);
+                    Answer Answer2 = processCheckBox(answer2);
+                    Answer Answer3 = processCheckBox(answer3);
+                    Answer Answer4 = processCheckBox(answer4);
+                    // now calculate the mark for each question
+                    finalMark += calculateMark(Answer1, Answer2, Answer3, Answer4, currentQuestion);
+                }
+                String mark = finalMark + "/" + quizMark;
 
-            // calculate grade
-            double gradee = (double) Math.round(finalMark/quizMark * 100)/10;
-            String grade = Double.toString(gradee) + "/10.0";
+                // calculate grade
+                double gradee = (double) Math.round(finalMark / quizMark * 100) / 10;
+                String grade = Double.toString(gradee) + "/10.0";
 
-            controller.setInfo(finishTime,startTime,timeTaken,grade,mark);
+                controller.setInfo(finishTime, startTime, timeTaken, grade, mark);
 
-            questionContainer.getChildren().add(0, finishpane);
-            finishQuiz.setVisible(false);
-            backHome.setVisible(true);
-            for (int i = 0; i < questions.size(); i++){
-                int index = 2*i+2;
-                FXMLLoader newloader = new FXMLLoader(getClass().getResource("answer.fxml"));
-                AnchorPane answerPane = newloader.load();
-                answer newcontroller = newloader.getController();
-                newcontroller.setCurrentQuestion(questions.get(i));
-                questionContainer.getChildren().add(index, answerPane);
+                questionContainer.getChildren().add(0, finishpane);
+                finishQuiz.setVisible(false);
+                backHome.setVisible(true);
+                for (int i = 0; i < questions.size(); i++) {
+                    int index = 2 * i + 2;
+                    FXMLLoader newloader = new FXMLLoader(getClass().getResource("answer.fxml"));
+                    AnchorPane answerPane = newloader.load();
+                    answer newcontroller = newloader.getController();
+                    newcontroller.setCurrentQuestion(questions.get(i));
+                    questionContainer.getChildren().add(index, answerPane);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

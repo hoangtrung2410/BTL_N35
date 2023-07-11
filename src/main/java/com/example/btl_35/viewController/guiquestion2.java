@@ -28,6 +28,8 @@ public class guiquestion2 {
     @FXML
     private CheckBox answer3;
     @FXML
+    private CheckBox answer4;
+    @FXML
     private ImageView imageView;
     @FXML
     private MediaView mediaView;
