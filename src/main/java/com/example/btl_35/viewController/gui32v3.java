@@ -19,8 +19,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.shape.SVGPath;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -31,14 +29,13 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-import java.time.Duration;
 import java.util.HashSet;
 import java.util.Set;
 
-public class gui32v2 {
-
-    @FXML
-    private Button moreChoice;
+public class gui32v3 {
+//    public void setCategoryName2(String categoryName2) {
+//        selectedcategory2.setText(categoryName2);
+//    }
     @FXML
     private Button deleteimage1;
 
@@ -63,6 +60,31 @@ public class gui32v2 {
 
     @FXML
     private TextField imagepath3;
+    @FXML
+    private TextField imagepath4;
+
+    @FXML
+    private TextField imagepath5;
+
+    @FXML
+    private TextField imagepath6;
+    @FXML
+    private TextField choice4;
+
+    @FXML
+    private TextField choice5;
+
+    @FXML
+    private TextField choice6;
+
+    @FXML
+    private Button deleteimage4;
+
+    @FXML
+    private Button deleteimage5;
+
+    @FXML
+    private Button deleteimage6;
 
     @FXML
     private ImageView imageview1;
@@ -72,6 +94,16 @@ public class gui32v2 {
 
     @FXML
     private ImageView imageview3;
+
+    @FXML
+    private ImageView imageview4;
+
+    @FXML
+    private ImageView imageview5;
+
+    @FXML
+    private ImageView imageview6;
+
     @FXML
     private Button saveimage1;
 
@@ -80,6 +112,23 @@ public class gui32v2 {
 
     @FXML
     private Button saveimage3;
+    @FXML
+    private Button saveimage4;
+
+    @FXML
+    private Button saveimage5;
+
+    @FXML
+    private Button saveimage6;
+
+    @FXML
+    private Button image324;
+
+    @FXML
+    private Button image325;
+
+    @FXML
+    private Button image326;
     @FXML
     private AnchorPane anchorInfoPane;
     @FXML
@@ -287,6 +336,74 @@ public class gui32v2 {
         }
     }
     @FXML
+    void image32click4(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        Stage stage = (Stage) image324.getScene().getWindow();
+        // Thiết lập tiêu đề cho hộp thoại chọn tệp tin
+        fileChooser.setTitle("Chọn tệp tin");
+        // Thiết lập bộ lọc cho hộp thoại chọn tệp tin
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.mp4","*.gif");
+        fileChooser.getExtensionFilters().add(imageFilter);
+        // Hiển thị hộp thoại chọn tệp tin và lấy đường dẫn được chọn
+        selectedImageFile = fileChooser.showOpenDialog(stage);
+        if (selectedImageFile != null) {
+            String filePath = selectedImageFile.getAbsolutePath();
+            // Kiểm tra định dạng file
+            String fileExtension = getFileExtension(selectedImageFile);
+            if (fileExtension.equalsIgnoreCase("png") || fileExtension.equalsIgnoreCase("jpg")|| fileExtension.equalsIgnoreCase("gif")) {
+                // Đường dẫn tệp tin đã chọn có định dạng đúng
+                System.out.println("Đường dẫn tệp tin: " + filePath);
+                imagepath4.setText(filePath);
+            }
+        }
+    }
+
+    @FXML
+    void image32click5(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        Stage stage = (Stage) image325.getScene().getWindow();
+        // Thiết lập tiêu đề cho hộp thoại chọn tệp tin
+        fileChooser.setTitle("Chọn tệp tin");
+        // Thiết lập bộ lọc cho hộp thoại chọn tệp tin
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.mp4","*.gif");
+        fileChooser.getExtensionFilters().add(imageFilter);
+        // Hiển thị hộp thoại chọn tệp tin và lấy đường dẫn được chọn
+        selectedImageFile = fileChooser.showOpenDialog(stage);
+        if (selectedImageFile != null) {
+            String filePath = selectedImageFile.getAbsolutePath();
+            // Kiểm tra định dạng file
+            String fileExtension = getFileExtension(selectedImageFile);
+            if (fileExtension.equalsIgnoreCase("png") || fileExtension.equalsIgnoreCase("jpg")|| fileExtension.equalsIgnoreCase("gif")) {
+                // Đường dẫn tệp tin đã chọn có định dạng đúng
+                System.out.println("Đường dẫn tệp tin: " + filePath);
+                imagepath5.setText(filePath);
+            }
+        }
+    }
+
+    @FXML
+    void image32click6(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        Stage stage = (Stage) image326.getScene().getWindow();
+        // Thiết lập tiêu đề cho hộp thoại chọn tệp tin
+        fileChooser.setTitle("Chọn tệp tin");
+        // Thiết lập bộ lọc cho hộp thoại chọn tệp tin
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.mp4","*.gif");
+        fileChooser.getExtensionFilters().add(imageFilter);
+        // Hiển thị hộp thoại chọn tệp tin và lấy đường dẫn được chọn
+        selectedImageFile = fileChooser.showOpenDialog(stage);
+        if (selectedImageFile != null) {
+            String filePath = selectedImageFile.getAbsolutePath();
+            // Kiểm tra định dạng file
+            String fileExtension = getFileExtension(selectedImageFile);
+            if (fileExtension.equalsIgnoreCase("png") || fileExtension.equalsIgnoreCase("jpg")|| fileExtension.equalsIgnoreCase("gif")) {
+                // Đường dẫn tệp tin đã chọn có định dạng đúng
+                System.out.println("Đường dẫn tệp tin: " + filePath);
+                imagepath6.setText(filePath);
+            }
+        }
+    }
+    @FXML
     void savechangesandcontinueclick(ActionEvent event) {
 
     }
@@ -428,6 +545,92 @@ public class gui32v2 {
         }
     }
     @FXML
+    void saveimage4(ActionEvent event) {
+        if (selectedImageFile != null) {
+            String fileName = selectedImageFile.getName();
+            File destinationDir = new File("src/main/java/com/example/btl_35/media");
+            if (!destinationDir.exists()) {
+                destinationDir.mkdirs();
+            }
+            Path destinationPath = new File(destinationDir, fileName).toPath();
+            try {
+                // Kiểm tra định dạng file
+                String fileExtension = getFileExtension(selectedImageFile);
+                String imageFileName = selectedImageFile.getName();
+                Path newimagepath = new File(destinationDir, imageFileName).toPath();
+                Files.copy(selectedImageFile.toPath(), newimagepath, StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("image đã được sao chép vào: " + newimagepath);
+                this.newImagepath = newimagepath.toString();
+                // Hiển thị hình ảnh trong ImageView
+                ImageView image = new ImageView(selectedImageFile.toURI().toString());
+                imageview4.setImage(image.getImage());
+            } catch (IOException e) {
+                System.out.println("Lỗi khi sao chép file.");
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Không có file để sao chép.");
+        }
+    }
+
+    @FXML
+    void saveimage5(ActionEvent event) {
+        if (selectedImageFile != null) {
+            String fileName = selectedImageFile.getName();
+            File destinationDir = new File("src/main/java/com/example/btl_35/media");
+            if (!destinationDir.exists()) {
+                destinationDir.mkdirs();
+            }
+            Path destinationPath = new File(destinationDir, fileName).toPath();
+            try {
+                // Kiểm tra định dạng file
+                String fileExtension = getFileExtension(selectedImageFile);
+                String imageFileName = selectedImageFile.getName();
+                Path newimagepath = new File(destinationDir, imageFileName).toPath();
+                Files.copy(selectedImageFile.toPath(), newimagepath, StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("image đã được sao chép vào: " + newimagepath);
+                this.newImagepath = newimagepath.toString();
+                // Hiển thị hình ảnh trong ImageView
+                ImageView image = new ImageView(selectedImageFile.toURI().toString());
+                imageview5.setImage(image.getImage());
+            } catch (IOException e) {
+                System.out.println("Lỗi khi sao chép file.");
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Không có file để sao chép.");
+        }
+    }
+
+    @FXML
+    void saveimage6(ActionEvent event) {
+        if (selectedImageFile != null) {
+            String fileName = selectedImageFile.getName();
+            File destinationDir = new File("src/main/java/com/example/btl_35/media");
+            if (!destinationDir.exists()) {
+                destinationDir.mkdirs();
+            }
+            Path destinationPath = new File(destinationDir, fileName).toPath();
+            try {
+                // Kiểm tra định dạng file
+                String fileExtension = getFileExtension(selectedImageFile);
+                String imageFileName = selectedImageFile.getName();
+                Path newimagepath = new File(destinationDir, imageFileName).toPath();
+                Files.copy(selectedImageFile.toPath(), newimagepath, StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("image đã được sao chép vào: " + newimagepath);
+                this.newImagepath = newimagepath.toString();
+                // Hiển thị hình ảnh trong ImageView
+                ImageView image = new ImageView(selectedImageFile.toURI().toString());
+                imageview6.setImage(image.getImage());
+            } catch (IOException e) {
+                System.out.println("Lỗi khi sao chép file.");
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Không có file để sao chép.");
+        }
+    }
+    @FXML
     void deleteimage(ActionEvent event) {
         imagepath.clear();
         selectedImageFile = null;
@@ -485,7 +688,6 @@ public class gui32v2 {
     void deleteimage3(ActionEvent event) {
         imagepath3.clear();
         selectedImageFile = null;
-        // Xóa video ở địa chỉ mới (nếu có)
         if (newImagepath != null) {
             File videoFile = new File(newImagepath);
             System.out.println("Image đã được xóa: " + newImagepath);
@@ -496,19 +698,45 @@ public class gui32v2 {
         newImagepath = null;
     }
     @FXML
-    void moreChoice(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("gui32v3.fxml"));
-            Parent gui32v2Parent = loader.load();
-            Scene gui32v2Scene = new Scene(gui32v2Parent);
-            gui32v3 controller = loader.getController();
-//            controller.setCategoryName2();
-            Stage stage = (Stage) moreChoice.getScene().getWindow();
-            stage.setScene(gui32v2Scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+    void deleteimage4(ActionEvent event) {
+        imagepath4.clear();
+        selectedImageFile = null;
+        if (newImagepath != null) {
+            File videoFile = new File(newImagepath);
+            System.out.println("Image đã được xóa: " + newImagepath);
+            imageview4.setImage(null); // Clear the image in ImageView
+        } else {
+            System.out.println("Không thể xóa Image: " + newImagepath);
         }
+        newImagepath = null;
+    }
+
+    @FXML
+    void deleteimage5(ActionEvent event) {
+        imagepath5.clear();
+        selectedImageFile = null;
+        if (newImagepath != null) {
+            File videoFile = new File(newImagepath);
+            System.out.println("Image đã được xóa: " + newImagepath);
+            imageview5.setImage(null); // Clear the image in ImageView
+        } else {
+            System.out.println("Không thể xóa Image: " + newImagepath);
+        }
+        newImagepath = null;
+    }
+
+    @FXML
+    void deleteimage6(ActionEvent event) {
+        imagepath6.clear();
+        selectedImageFile = null;
+        if (newImagepath != null) {
+            File videoFile = new File(newImagepath);
+            System.out.println("Image đã được xóa: " + newImagepath);
+            imageview6.setImage(null); // Clear the image in ImageView
+        } else {
+            System.out.println("Không thể xóa Image: " + newImagepath);
+        }
+        newImagepath = null;
     }
     public void initialize() {
         // Listen to changes in the quiz name field
