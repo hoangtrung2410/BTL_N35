@@ -74,9 +74,9 @@
             <Font size="48.0" />
          </font>
       </Label>
-      <ScrollPane fx:id="scrollPane" layoutX="6.0" layoutY="199.0" prefHeight="1200.0" prefWidth="848.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="198.0">
+      <ScrollPane fx:id="scrollPane" layoutX="6.0" layoutY="199.0" prefHeight="1500.0" prefWidth="848.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="198.0">
         <content>
-          <AnchorPane fx:id="anchorInfoPane" minHeight="0.0" minWidth="0.0" prefHeight="1256.0" prefWidth="846.0" style="-fx-background-color: white;">
+          <AnchorPane fx:id="anchorInfoPane" minHeight="0.0" minWidth="0.0" prefHeight="1393.0" prefWidth="846.0" style="-fx-background-color: white;">
                <children>
                   <Label alignment="CENTER" contentDisplay="TOP" prefHeight="58.0" prefWidth="395.0" style="-fx-font-family: arial; -fx-font-size: 25;" text="Adding a Multiple choice question" textAlignment="CENTER" textFill="RED">
                      <font>
@@ -108,7 +108,7 @@
                         <Label layoutX="46.0" layoutY="77.0" style="-fx-font-family: arial; -fx-font-size: 20;" text="Grade" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="274.0" layoutY="752.0" prefHeight="134.0" prefWidth="513.0" style="-fx-background-color: #EEEEEE;">
+                  <AnchorPane layoutX="272.0" layoutY="791.0" prefHeight="134.0" prefWidth="513.0" style="-fx-background-color: #EEEEEE;" AnchorPane.leftAnchor="272.0" AnchorPane.rightAnchor="60.0">
                      <children>
                         <Label layoutX="36.0" layoutY="27.0" style="-fx-font-family: arial; -fx-font-size: 20;" text="Choice 2">
                            <font>
@@ -120,7 +120,7 @@
                         <Label layoutX="46.0" layoutY="77.0" style="-fx-font-family: arial; -fx-font-size: 20;" text="Grade" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="267.0" layoutY="1063.0" prefHeight="195.0" prefWidth="526.0">
+                  <AnchorPane layoutX="273.0" layoutY="1201.0" prefHeight="195.0" prefWidth="526.0">
                      <children>
                         <Button fx:id="savechanges" layoutX="24.0" layoutY="137.0" mnemonicParsing="false" onAction="#savechangesclick" prefHeight="22.0" prefWidth="154.0" style="-fx-background-color: red; -fx-font-family: arial; -fx-font-size: 20;" text="Save changes" textFill="WHITE">
                            <font>
@@ -145,8 +145,7 @@
                      </children>
                   </AnchorPane>
                   <Label layoutX="16.0" layoutY="545.0" style="-fx-font-family: arial; -fx-font-size: 20;" text="Image/Video/Gif" />
-                  <Button fx:id="image32" layoutX="267.0" layoutY="543.0" mnemonicParsing="false" onAction="#image32click" prefHeight="31.0" prefWidth="149.0" style="-fx-background-color: #3399FF; -fx-font-family: arial; -fx-font-size: 16;" text="CHOOSE A FILE" textFill="WHITE" />
-                  <AnchorPane layoutX="273.0" layoutY="910.0" prefHeight="134.0" prefWidth="513.0" style="-fx-background-color: #EEEEEE;">
+                  <AnchorPane layoutX="272.0" layoutY="993.0" prefHeight="134.0" prefWidth="513.0" style="-fx-background-color: #EEEEEE;" AnchorPane.leftAnchor="272.0" AnchorPane.rightAnchor="60.0">
                      <children>
                         <Label layoutX="36.0" layoutY="27.0" style="-fx-font-family: arial; -fx-font-size: 20;" text="Choice 3">
                            <font>
@@ -163,22 +162,78 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="deleteimage" layoutX="725.0" layoutY="539.0" mnemonicParsing="false" onAction="#deleteimage1" style="-fx-background-color: #3399FF; -fx-font-family: arial; -fx-font-size: 20;" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="30.0">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="saveimage" layoutX="645.0" layoutY="539.0" mnemonicParsing="false" onAction="#saveimage1" style="-fx-background-color: #3399FF; -fx-font-family: arial; -fx-font-size: 20;" text="Save" textFill="WHITE" AnchorPane.rightAnchor="126.0">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
-                  <TextField fx:id="imagepath" layoutX="424.0" layoutY="542.0" prefHeight="36.0" prefWidth="210.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-font-family: arial; -fx-background-size: 16;" AnchorPane.leftAnchor="424.0" AnchorPane.rightAnchor="211.99999999999997" />
                   <Label layoutX="14.0" layoutY="574.0" style="-fx-font-family: arial; -fx-font-size: 20;" text="(Video trên 1s và dưới 10s)" />
                   <Accordion layoutX="267.0" layoutY="84.0" />
                   <TextField fx:id="selectedcategory2" editable="false" layoutX="266.0" layoutY="86.0" style="-fx-font-size: 16; -fx-font-family: arial;" AnchorPane.leftAnchor="266.0" AnchorPane.rightAnchor="380.0" />
                   <MediaView fx:id="preview" fitHeight="180.0" fitWidth="320.0" layoutX="272.0" layoutY="277.0" />
                   <ImageView fx:id="imageview" fitHeight="180.0" fitWidth="320.0" layoutX="272.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
+                  <AnchorPane layoutX="266.0" layoutY="539.0" prefHeight="36.0" prefWidth="531.0">
+                     <children>
+                        <TextField fx:id="imagepath" layoutX="154.0" prefHeight="36.0" prefWidth="211.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-font-family: arial; -fx-background-size: 16;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="154.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="image32" mnemonicParsing="false" onAction="#image32click" prefHeight="36.0" prefWidth="150.0" style="-fx-background-color: #3399FF; -fx-font-family: arial; -fx-font-size: 16;" text="CHOOSE A FILE" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="saveimage" layoutX="365.0" layoutY="4.0" mnemonicParsing="false" onAction="#saveimage" prefHeight="20.0" prefWidth="74.0" style="-fx-background-color: #3399FF; -fx-font-family: arial; -fx-font-size: 20;" text="Save" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="deleteimage" mnemonicParsing="false" onAction="#deleteimage" style="-fx-background-color: red; -fx-font-family: arial; -fx-font-size: 20;" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="270.0" layoutY="740.0" prefHeight="36.0" prefWidth="531.0">
+                     <children>
+                        <TextField fx:id="imagepath1" layoutX="154.0" prefHeight="36.0" prefWidth="211.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-font-family: arial; -fx-background-size: 16;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="154.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="image321" mnemonicParsing="false" onAction="#image32click1" prefHeight="36.0" prefWidth="150.0" style="-fx-background-color: #3399FF; -fx-font-family: arial; -fx-font-size: 16;" text="CHOOSE A FILE" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="saveimage1" layoutX="365.0" layoutY="4.0" mnemonicParsing="false" onAction="#saveimage1" prefHeight="20.0" prefWidth="74.0" style="-fx-background-color: #3399FF; -fx-font-family: arial; -fx-font-size: 20;" text="Save" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="deleteimage1" mnemonicParsing="false" onAction="#deleteimage1" style="-fx-background-color: red; -fx-font-family: arial; -fx-font-size: 20;" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="270.0" layoutY="941.0" prefHeight="36.0" prefWidth="531.0">
+                     <children>
+                        <TextField fx:id="imagepath2" layoutX="154.0" prefHeight="36.0" prefWidth="211.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-font-family: arial; -fx-background-size: 16;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="154.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="image322" mnemonicParsing="false" onAction="#image32click2" prefHeight="36.0" prefWidth="150.0" style="-fx-background-color: #3399FF; -fx-font-family: arial; -fx-font-size: 16;" text="CHOOSE A FILE" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="saveimage2" layoutX="365.0" layoutY="4.0" mnemonicParsing="false" onAction="#saveimage2" prefHeight="20.0" prefWidth="74.0" style="-fx-background-color: #3399FF; -fx-font-family: arial; -fx-font-size: 20;" text="Save" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="deleteimage2" mnemonicParsing="false" onAction="#deleteimage2" style="-fx-background-color: red; -fx-font-family: arial; -fx-font-size: 20;" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <ImageView fx:id="imageview1" fitHeight="144.0" fitWidth="256.0" layoutX="8.0" layoutY="603.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imageview2" fitHeight="144.0" fitWidth="256.0" layoutX="8.0" layoutY="791.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imageview3" fitHeight="144.0" fitWidth="256.0" layoutX="8.0" layoutY="993.0" pickOnBounds="true" preserveRatio="true" />
+                  <AnchorPane layoutX="270.0" layoutY="1144.0" prefHeight="36.0" prefWidth="531.0">
+                     <children>
+                        <TextField fx:id="imagepath3" layoutX="154.0" prefHeight="36.0" prefWidth="211.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-font-family: arial; -fx-background-size: 16;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="154.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="image323" mnemonicParsing="false" onAction="#image32click3" prefHeight="36.0" prefWidth="150.0" style="-fx-background-color: #3399FF; -fx-font-family: arial; -fx-font-size: 16;" text="CHOOSE A FILE" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="saveimage3" layoutX="365.0" layoutY="4.0" mnemonicParsing="false" onAction="#saveimage3" prefHeight="20.0" prefWidth="74.0" style="-fx-background-color: #3399FF; -fx-font-family: arial; -fx-font-size: 20;" text="Save" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="deleteimage3" mnemonicParsing="false" onAction="#deleteimage3" style="-fx-background-color: red; -fx-font-family: arial; -fx-font-size: 20;" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
         </content>
