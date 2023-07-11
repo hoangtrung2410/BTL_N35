@@ -96,7 +96,7 @@ public class gui63v2 {
                     if (item != null) {
                         HBox container = new HBox();
                         container.setAlignment(Pos.CENTER_LEFT);
-                        container.setSpacing(10);
+                        container.setSpacing(25);
                         // Tạo checkbox không có nội dung
                         CheckBox checkBox = new CheckBox();
                         checkBox.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);

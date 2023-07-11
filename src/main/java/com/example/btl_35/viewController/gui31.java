@@ -6,9 +6,13 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -114,26 +118,40 @@ public class gui31 {
 				protected void updateItem(String item, boolean empty) {
 					super.updateItem(item, empty);
 					if (item != null) {
+						HBox container = new HBox();
+						container.setAlignment(Pos.CENTER_LEFT);
+						container.setSpacing(10);
 						SVGPath icon = new SVGPath();
+						Button button = new Button();
+						button.setText("Edit");
+						// Add event handler to the button
+//						button.setOnAction(event -> {
+//							Question selectedQuestion = showquestion.getSelectionModel().getSelectedItem();
+//							test(selectedQuestion);
+//						});
 						icon.setContent("M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z");
-						// Thiết lập kích thước của biểu tượng
+// Thiết lập kích thước của biểu tượng
 						icon.setScaleX(1);
 						icon.setScaleY(1);
-						// Đặt biểu tượng vào ô cell
-						setGraphic(icon);
+						Label textLabel = new Label(item);
+						textLabel.setFont(Font.font("Arial", FontWeight.NORMAL,16));
+						textLabel.setStyle("-fx-padding: 0 0 0 10");
+						container.getChildren().addAll(icon, textLabel, button);
+// Đặt biểu tượng vào ô cell
+						setGraphic(container);
 						icon.setStyle("-fx-fill: #3399FF;");
-						// Đặt text cho ô cell
-						setText(item);
-						setFont(Font.font("Arial", FontWeight.NORMAL,16));
-						setStyle("-fx-padding: 10,0,0,10");
+// Đặt text cho ô cell
+						setText(null);
 
 					} else {
 						setText(null);
+						setGraphic(null);
 					}
 				}
 			};
 			return cell;
 		});
+
 		questionColumn.setPrefWidth(1920);
 		questionColumn.setStyle("-fx-background-color: white;-fx-font-size:14;-fx-font-weight:normal;");
 		questionColumn.setCellValueFactory(cellData -> {
