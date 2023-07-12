@@ -762,30 +762,15 @@ public class gui32b {
         }
 
     }
-    private void setQuestionImageView(Question question, ImageView imageView) {
-        String imageUrl = question.getMedia().getUrl();
-        if (imageUrl != null && !imageUrl.isEmpty()) {
-            try {
-                Image image = new Image(imageUrl);
-                imageView.setImage(image);
-            } catch (IllegalArgumentException e) {
-                // Handle the case where the URL is invalid or the resource could not be found
-                System.err.println("Failed to load image at URL: " + imageUrl);
-                e.printStackTrace();
-            }
-        } else {
-            imageView.setImage(null);
-        }
-    }
-
     public void setQuestionInfo() {
         setQuestionName(currentQuestion.getName());
         setQuestionMark(currentQuestion.getMark());
         setQuestionCategory(currentQuestion.getCategory().getName());
         setQuestionText(currentQuestion.getText());
         if(currentQuestion.getMedia()!=null){
-        setQuestionMedia(currentQuestion,imagepath) ;
-        setQuestionImageView(currentQuestion,imageview);
+            setContent(this.currentQuestion.getMedia().getUrl());
+            setQuestionMedia(currentQuestion,imagepath) ;
+//        setQuestionImageView(currentQuestion,imageview);
         }
 
     }
@@ -815,11 +800,11 @@ public class gui32b {
     }
     private void setAnsweImageView(Answer answer, ImageView imageView) {
         String imageUrl = answer.getMedia().getUrl();
+        File contentFile = new File(imageUrl);
         if (imageUrl != null && !imageUrl.isEmpty()) {
             try {
-                Image image;
-                image = new Image(imageUrl);
-                imageView.setImage(image);
+                ImageView image = new ImageView(contentFile.toURI().toString());
+                imageView.setImage(image.getImage());
             } catch (IllegalArgumentException e) {
                 // Handle the case where the URL is invalid or the resource could not be found
                 System.err.println("Failed to load image at URL: " + imageUrl);
@@ -1134,6 +1119,29 @@ public class gui32b {
             extension = fileName.substring(dotIndex + 1).toLowerCase();
         }
         return extension;
+    }
+    private void setContent(String filePath){
+        File contentFile = new File(filePath);
+        String fileExtension = getFileExtension(contentFile);
+        if(fileExtension.equalsIgnoreCase("mp4")){
+            setVideo(contentFile);
+        } else {
+            setImage(contentFile);
+        }
+    }
+    private void setImage(File contentFile){
+        preview.setVisible(false);
+        ImageView image = new ImageView(contentFile.toURI().toString());
+        imageview.setImage(image.getImage());
+    }
+    private void setVideo(File contentFile){
+        imageview.setVisible(false);
+        replay.setVisible(true);
+        javafx.scene.media.Media media = new javafx.scene.media.Media(contentFile.toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        // Gán MediaPlayer vào MediaView để hiển thị video
+        preview.setMediaPlayer(mediaPlayer);
+        this.mediaPlayer = mediaPlayer;
     }
 
 }
