@@ -324,6 +324,7 @@ public class gui73 {
                     // now calculate the mark for each question
                     finalMark += calculateMark(Answer1, Answer2, Answer3, Answer4, currentQuestion);
                 }
+                finalMark = ((int)(finalMark * 10)) / 10.0;
                 String mark = finalMark + "/" + quizMark;
 
                 // calculate grade
