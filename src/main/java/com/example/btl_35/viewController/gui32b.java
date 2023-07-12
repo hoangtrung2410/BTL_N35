@@ -3,6 +3,7 @@ package com.example.btl_35.viewController;
 import com.example.btl_35.dao.AnswerDao;
 import com.example.btl_35.dao.QuestionDao;
 import com.example.btl_35.entity.Answer;
+import com.example.btl_35.entity.Media;
 import com.example.btl_35.entity.Question;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -46,7 +48,7 @@ public class gui32b {
     private void setAnswerList(Question question) {
         this.answerList = new ArrayList<>(question.getAnswers());
         this.answerCount = answerList.size();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 6; i++) {
             if (i < answerCount) {
                 defaultAnswers.add(answerList.get(i));
             } else {
@@ -57,7 +59,7 @@ public class gui32b {
     }
 
     private int answerCount;
-    private List<Answer> defaultAnswers = new ArrayList<>(3);
+    private List<Answer> defaultAnswers = new ArrayList<>(6);
 
     //
     public void setCurrentQuestion(Question question) {
@@ -733,7 +735,8 @@ public class gui32b {
     }
     // call in previous GUI
     private void setQuestionName(String questionName) {
-        questionNameField.setText(questionName == null ? "" : questionName);
+//        questionNameField.setText(questionName == null ? "" : questionName);
+        questionNameField.setText(questionName);
     }
 
     private void setQuestionCategory(String questionCategory) {
@@ -751,16 +754,54 @@ public class gui32b {
             questionMarkField.setText("");
         }
     }
+    private void setQuestionMedia(Question question, TextField fileImage){
+        if (question.getMedia().getUrl() != null) {
+            fileImage.setText(question.getMedia().getUrl());
+        } else {
+            imagepath.setText("");
+        }
+
+    }
+    private void setQuestionImageView(Question question, ImageView imageView) {
+        String imageUrl = question.getMedia().getUrl();
+        if (imageUrl != null && !imageUrl.isEmpty()) {
+            try {
+                Image image;
+                image = new Image(imageUrl);
+                imageView.setImage(image);
+            } catch (IllegalArgumentException e) {
+                // Handle the case where the URL is invalid or the resource could not be found
+                System.err.println("Failed to load image at URL: " + imageUrl);
+                e.printStackTrace();
+            }
+        } else {
+            imageView.setImage(null);
+        }
+    }
 
     public void setQuestionInfo() {
         setQuestionName(currentQuestion.getName());
         setQuestionMark(currentQuestion.getMark());
         setQuestionCategory(currentQuestion.getCategory().getName());
         setQuestionText(currentQuestion.getText());
+        if(currentQuestion.getMedia().getUrl()!=null){
+        setQuestionMedia(currentQuestion,imagepath) ;
+        setQuestionImageView(currentQuestion,imageview);
+        }
+
+    }
+    private void setAnswerMedia(Answer answer, TextField filePath){
+        if (answer.getMedia().getUrl() != null) {
+            filePath.setText(answer.getMedia().getUrl());
+        } else {
+            filePath.setText("");
+        }
+
     }
 
     // set textfield for the answer
     private void setAnswerChoice(Answer answer, TextField answerChoice) {
+
         answerChoice.setText(answer.getChoice());
     }
 
@@ -771,6 +812,22 @@ public class gui32b {
             gradeChoice.setValue(answerGrade);
         } else {
             gradeChoice.setValue("");
+        }
+    }
+    private void setAnsweImageView(Answer answer, ImageView imageView) {
+        String imageUrl = answer.getMedia().getUrl();
+        if (imageUrl != null && !imageUrl.isEmpty()) {
+            try {
+                Image image;
+                image = new Image(imageUrl);
+                imageView.setImage(image);
+            } catch (IllegalArgumentException e) {
+                // Handle the case where the URL is invalid or the resource could not be found
+                System.err.println("Failed to load image at URL: " + imageUrl);
+                e.printStackTrace();
+            }
+        } else {
+            imageView.setImage(null);
         }
     }
 
@@ -796,19 +853,110 @@ public class gui32b {
         if (questionCount == 1) {
             setAnswerGrade(answerList.get(0), answerGrade1);
             setAnswerChoice(answerList.get(0), answerChoice1);
+            if(answerList.get(0).getMedia().getUrl()!=null){
+            setAnswerMedia(answerList.get(0),imagepath1);
+            setAnsweImageView(answerList.get(0),imageview1);
+            }
         } else if (questionCount == 2) {
             setAnswerGrade(answerList.get(0), answerGrade1);
             setAnswerChoice(answerList.get(0), answerChoice1);
             setAnswerGrade(answerList.get(1), answerGrade2);
             setAnswerChoice(answerList.get(1), answerChoice2);
-        } else if (questionCount == 3) {
+            if(answerList.get(0).getMedia().getUrl()!=null){
+                setAnswerMedia(answerList.get(0),imagepath1);
+                setAnsweImageView(answerList.get(0),imageview1);
+                setAnswerMedia(answerList.get(1),imagepath2);
+                setAnsweImageView(answerList.get(1),imageview2);
+            }
+        }
+        else if (questionCount == 3) {
             setAnswerGrade(answerList.get(0), answerGrade1);
             setAnswerChoice(answerList.get(0), answerChoice1);
             setAnswerGrade(answerList.get(1), answerGrade2);
             setAnswerChoice(answerList.get(1), answerChoice2);
             setAnswerGrade(answerList.get(2), answerGrade3);
             setAnswerChoice(answerList.get(2), answerChoice3);
-        } else {
+            if(answerList.get(0).getMedia().getUrl()!=null){
+                setAnswerMedia(answerList.get(0),imagepath1);
+                setAnsweImageView(answerList.get(0),imageview1);
+                setAnswerMedia(answerList.get(1),imagepath2);
+                setAnsweImageView(answerList.get(1),imageview2);
+                setAnswerMedia(answerList.get(2),imagepath3);
+                setAnsweImageView(answerList.get(2),imageview3);
+            }
+        }
+        else if (questionCount == 4) {
+            setAnswerGrade(answerList.get(0), answerGrade1);
+            setAnswerChoice(answerList.get(0), answerChoice1);
+            setAnswerGrade(answerList.get(1), answerGrade2);
+            setAnswerChoice(answerList.get(1), answerChoice2);
+            setAnswerGrade(answerList.get(2), answerGrade3);
+            setAnswerChoice(answerList.get(2), answerChoice3);
+            setAnswerGrade(answerList.get(3), answerGrade4);
+            setAnswerChoice(answerList.get(3), answerChoice4);
+            if(answerList.get(0).getMedia().getUrl()!=null){
+                setAnswerMedia(answerList.get(0),imagepath1);
+                setAnsweImageView(answerList.get(0),imageview1);
+                setAnswerMedia(answerList.get(1),imagepath2);
+                setAnsweImageView(answerList.get(1),imageview2);
+                setAnswerMedia(answerList.get(2),imagepath3);
+                setAnsweImageView(answerList.get(2),imageview3);
+                setAnswerMedia(answerList.get(3),imagepath4);
+                setAnsweImageView(answerList.get(3),imageview4);
+            }
+        }else if (questionCount == 5) {
+            setAnswerGrade(answerList.get(0), answerGrade1);
+            setAnswerChoice(answerList.get(0), answerChoice1);
+            setAnswerGrade(answerList.get(1), answerGrade2);
+            setAnswerChoice(answerList.get(1), answerChoice2);
+            setAnswerGrade(answerList.get(2), answerGrade3);
+            setAnswerChoice(answerList.get(2), answerChoice3);
+            setAnswerGrade(answerList.get(3), answerGrade4);
+            setAnswerChoice(answerList.get(3), answerChoice4);
+            setAnswerGrade(answerList.get(4), answerGrade5);
+            setAnswerChoice(answerList.get(4), answerChoice5);
+            if(answerList.get(0).getMedia().getUrl()!=null){
+                setAnswerMedia(answerList.get(0),imagepath1);
+                setAnsweImageView(answerList.get(0),imageview1);
+                setAnswerMedia(answerList.get(1),imagepath2);
+                setAnsweImageView(answerList.get(1),imageview2);
+                setAnswerMedia(answerList.get(2),imagepath3);
+                setAnsweImageView(answerList.get(2),imageview3);
+                setAnswerMedia(answerList.get(3),imagepath4);
+                setAnsweImageView(answerList.get(3),imageview4);
+                setAnswerMedia(answerList.get(4),imagepath5);
+                setAnsweImageView(answerList.get(4),imageview5);
+            }
+        }
+        else if (questionCount == 6) {
+            setAnswerGrade(answerList.get(0), answerGrade1);
+            setAnswerChoice(answerList.get(0), answerChoice1);
+            setAnswerGrade(answerList.get(1), answerGrade2);
+            setAnswerChoice(answerList.get(1), answerChoice2);
+            setAnswerGrade(answerList.get(2), answerGrade3);
+            setAnswerChoice(answerList.get(2), answerChoice3);
+            setAnswerGrade(answerList.get(3), answerGrade4);
+            setAnswerChoice(answerList.get(3), answerChoice4);
+            setAnswerGrade(answerList.get(4), answerGrade5);
+            setAnswerChoice(answerList.get(4), answerChoice5);
+            setAnswerGrade(answerList.get(5), answerGrade6);
+            setAnswerChoice(answerList.get(5), answerChoice6);
+            if(answerList.get(0).getMedia().getUrl()!=null){
+                setAnswerMedia(answerList.get(0),imagepath1);
+                setAnsweImageView(answerList.get(0),imageview1);
+                setAnswerMedia(answerList.get(1),imagepath2);
+                setAnsweImageView(answerList.get(1),imageview2);
+                setAnswerMedia(answerList.get(2),imagepath3);
+                setAnsweImageView(answerList.get(2),imageview3);
+                setAnswerMedia(answerList.get(3),imagepath4);
+                setAnsweImageView(answerList.get(3),imageview4);
+                setAnswerMedia(answerList.get(4),imagepath5);
+                setAnsweImageView(answerList.get(4),imageview5);
+                setAnswerMedia(answerList.get(5),imagepath6);
+                setAnsweImageView(answerList.get(5),imageview6);
+            }
+
+        }else {
             System.out.println("Loi hien thi");
             System.out.println("So cau hoi: " + questionCount);
         }
@@ -876,33 +1024,69 @@ public class gui32b {
         if (defaultAnswers.get(2) != null) {
             AnswerDao.getInstance().delete(defaultAnswers.get(2).getId());
         }
+        if (defaultAnswers.get(3) != null) {
+            AnswerDao.getInstance().delete(defaultAnswers.get(3).getId());
+        }
+        if (defaultAnswers.get(4) != null) {
+            AnswerDao.getInstance().delete(defaultAnswers.get(4).getId());
+
+        }
+        if (defaultAnswers.get(5) != null) {
+            AnswerDao.getInstance().delete(defaultAnswers.get(5).getId());
+        }
         Set<Answer> answers = new HashSet<>();
         if (!answerChoice1.getText().isEmpty()) {
-            Answer da1 = createAnswer(answerChoice1.getText(), answerGrade1.getValue());
+            Answer da1 = createAnswer(answerChoice1.getText(), answerGrade1.getValue(),newImagepath1);
             da1.setQuestion(currentQuestion);
             answers.add(da1);
         }
         if (!answerChoice2.getText().isEmpty()) {
-            Answer da2 = createAnswer(answerChoice2.getText(), answerGrade2.getValue());
+            Answer da2 = createAnswer(answerChoice2.getText(), answerGrade2.getValue(),newImagepath2);
             da2.setQuestion(currentQuestion);
             answers.add(da2);
         }
         if (!answerChoice3.getText().isEmpty()) {
-            Answer da3 = createAnswer(answerChoice3.getText(), answerGrade3.getValue());
+            Answer da3 = createAnswer(answerChoice3.getText(), answerGrade3.getValue(),newImagepath3);
             da3.setQuestion(currentQuestion);
             answers.add(da3);
         }
+        if (!answerChoice4.getText().isEmpty()) {
+            Answer da4 = createAnswer(answerChoice4.getText(), answerGrade4.getValue(),newImagepath4);
+            da4.setQuestion(currentQuestion);
+            answers.add(da4);
+        }
+        if (!answerChoice5.getText().isEmpty()) {
+            Answer da5 = createAnswer(answerChoice5.getText(), answerGrade5.getValue(),newImagepath5);
+            da5.setQuestion(currentQuestion);
+            answers.add(da5);
+        }
+        if (!answerChoice6.getText().isEmpty()) {
+            Answer da6 = createAnswer(answerChoice6.getText(), answerGrade6.getValue(),newImagepath6);
+            da6.setQuestion(currentQuestion);
+            answers.add(da6);
+        }
+        Media media = new Media();
+        media.setUrl(newImagepath);
+        if(media.getUrl()!=null){
+            currentQuestion.setMedia(media);
+        }
         int int_value = Integer.parseInt(questionMarkField.getText());
-        currentQuestion.setMark(int_value);
 
+        currentQuestion.setText(questionNameField.getText());
+        currentQuestion.setText(questionTextField.getText());
+        currentQuestion.setMark(int_value);
         currentQuestion.setAnswers(answers);
         QuestionDao.getInstance().update(currentQuestion);
 
-
     }
 
-    public static Answer createAnswer(String choiceText, String gradeInput) {
+    public static Answer createAnswer(String choiceText, String gradeInput,String file) {
+        Media media = new Media();
+        media.setUrl(file);
         Answer answer = new Answer();
+        if(media.getUrl()!=null){
+            answer.setMedia(media);
+        }
         answer.setChoice(choiceText);
         String numberString = gradeInput.replaceAll("%", "");
         double number = Double.parseDouble(numberString) / 100.0;
@@ -952,4 +1136,5 @@ public class gui32b {
         }
         return extension;
     }
+
 }

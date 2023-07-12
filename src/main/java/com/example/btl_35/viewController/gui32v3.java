@@ -909,7 +909,9 @@ public class gui32v3 {
         Media media = new Media();
         media.setUrl(imagepath);
         Answer answer = new Answer();
-        answer.setMedia(media);
+        if(media.getUrl()!=null){
+            answer.setMedia(media);
+        }
         answer.setChoice(choiceText);
         String numberString = gradeInput.replaceAll("%", "");
         double number = Double.parseDouble(numberString) / 100.0;
