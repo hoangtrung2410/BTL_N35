@@ -2,6 +2,7 @@ package com.example.btl_35.viewController;
 
 import com.example.btl_35.entity.Category;
 import com.example.btl_35.entity.Question;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.util.List;
@@ -109,73 +111,82 @@ public class gui31 {
 	}
 	public void initialize(Category selectedCategory, List<Question> questionList) {
 		showall.setDisable(true);
+
 		// Set up the columns in the TableView (assumed column names: "Name", "Category", etc.)
-		TableColumn<Question, String> questionColumn = new TableColumn<>("");
-		// Định dạng hiển thị của cột nameColumn
-		questionColumn.setCellFactory(column -> {
-			TableCell<Question, String> cell = new TableCell<Question, String>() {
-				@Override
-				protected void updateItem(String item, boolean empty) {
-					super.updateItem(item, empty);
-					if (item != null) {
-						HBox container = new HBox();
-						container.setAlignment(Pos.CENTER_LEFT);
-						container.setSpacing(10);
-						SVGPath icon = new SVGPath();
-						Button button = new Button();
-						button.setText("Edit");
-						// Add event handler to the button
-//						button.setOnAction(event -> {
-//							Question selectedQuestion = showquestion.getSelectionModel().getSelectedItem();
-//							test(selectedQuestion);
-//						});
-						icon.setContent("M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z");
-// Thiết lập kích thước của biểu tượng
-						icon.setScaleX(1);
-						icon.setScaleY(1);
-						Label textLabel = new Label(item);
-						textLabel.setFont(Font.font("Arial", FontWeight.NORMAL,16));
-						textLabel.setStyle("-fx-padding: 0 0 0 10");
-						container.getChildren().addAll(icon, textLabel, button);
-// Đặt biểu tượng vào ô cell
-						setGraphic(container);
-						icon.setStyle("-fx-fill: #3399FF;");
-// Đặt text cho ô cell
-						setText(null);
+		TableColumn<Question, HBox> questionColumn = new TableColumn<>("");
+		TableColumn<Question, Void> editColumn = new TableColumn<>("Action");
 
-					} else {
-						setText(null);
-						setGraphic(null);
-					}
-				}
-			};
-			return cell;
-		});
-
-		questionColumn.setPrefWidth(1920);
-		questionColumn.setStyle("-fx-background-color: white;-fx-font-size:14;-fx-font-weight:normal;");
+		// Set up cell value factories
 		questionColumn.setCellValueFactory(cellData -> {
 			Question question = cellData.getValue();
 			Integer questionId = question.getId();
 			String questionName = question.getText();
 			String displayText = questionId + ": " + questionName;
-			return new SimpleStringProperty(displayText);
+
+			HBox container = new HBox();
+			container.setAlignment(Pos.CENTER_LEFT);
+			container.setSpacing(10);
+
+			SVGPath icon = new SVGPath();
+			icon.setContent("M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z");
+			icon.setScaleX(1);
+			icon.setScaleY(1);
+
+			Label textLabel = new Label(displayText);
+			textLabel.setFont(Font.font("Arial", FontWeight.NORMAL, 16));
+			textLabel.setStyle("-fx-padding: 0 0 0 5");
+			icon.setStyle("-fx-fill: #3399FF;");
+			container.getChildren().addAll(icon, textLabel);
+
+			return new SimpleObjectProperty<>(container);
 		});
 
-		// add su kien click chon question
-		showquestion.setOnMouseClicked(event -> {
-			Question selectedQuestion = showquestion.getSelectionModel().getSelectedItem();
-			test(selectedQuestion);
-		});
+		// Set up cell factories for editColumn
+		Callback<TableColumn<Question, Void>, TableCell<Question, Void>> cellFactory = new Callback<>() {
+			@Override
+			public TableCell<Question, Void> call(final TableColumn<Question, Void> param) {
+				final TableCell<Question, Void> cell = new TableCell<>() {
+					private final HBox container = new HBox();
+					private final Button editButton = new Button("Edit");
+					{
+						container.setAlignment(Pos.CENTER);
+						container.getChildren().add(editButton);
+						editButton.setOnAction(event -> {
+							Question selectedQuestion = getTableView().getItems().get(getIndex());
+							test(selectedQuestion);
+						});
+						editButton.setStyle("-fx-background-color: White; -fx-text-fill: #3399FF;-fx-font-family: Arial;-fx-font-size: 16");
+					}
 
-		// Set up column header
-		// Add the column to the TableView
-		showquestion.getColumns().clear();
-		showquestion.getColumns().add(questionColumn);
-		showquestion.setStyle("-fx-background-color: white");
+					@Override
+					protected void updateItem(Void item, boolean empty) {
+						super.updateItem(item, empty);
+						if (empty) {
+							setGraphic(null);
+						} else {
+							setGraphic(editButton);
+						}
+					}
+				};
+				return cell;
+			}
+		};
+
+		// Add cell factories to columns
+		editColumn.setCellFactory(cellFactory);
+
+		// Set preferred widths for columns
+		questionColumn.setPrefWidth(723);
+		editColumn.setPrefWidth(100);
+
+		// Add columns to the TableView
+		showquestion.getColumns().addAll(questionColumn, editColumn);
+
 		// Populate the TableView with the questionList
 		showquestion.getItems().addAll(questionList);
 	}
+
+
 
 	private void test(Question selectedQuestion){
 		try {

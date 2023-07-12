@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -107,11 +106,7 @@
                   <Font name="System Bold" size="21.0" />
                </font>
             </Button>
-            <TableView fx:id="showquestion" layoutX="20.0" layoutY="280.0" prefHeight="186.0" prefWidth="823.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="269.6">
-              <columns>
-                <TableColumn prefWidth="715.9999809265137" />
-              </columns>
-            </TableView>
+            <TableView fx:id="showquestion" layoutX="20.0" layoutY="280.0" prefHeight="186.0" prefWidth="823.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="269.6" />
             <GridPane fx:id="showQuestionGridPane" layoutX="35.0" layoutY="257.0" prefHeight="46.0" prefWidth="792.0">
                <columnConstraints>
                   <ColumnConstraints />
