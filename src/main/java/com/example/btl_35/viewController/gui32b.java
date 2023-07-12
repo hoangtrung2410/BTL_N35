@@ -766,8 +766,7 @@ public class gui32b {
         String imageUrl = question.getMedia().getUrl();
         if (imageUrl != null && !imageUrl.isEmpty()) {
             try {
-                Image image;
-                image = new Image(imageUrl);
+                Image image = new Image(imageUrl);
                 imageView.setImage(image);
             } catch (IllegalArgumentException e) {
                 // Handle the case where the URL is invalid or the resource could not be found
@@ -784,7 +783,7 @@ public class gui32b {
         setQuestionMark(currentQuestion.getMark());
         setQuestionCategory(currentQuestion.getCategory().getName());
         setQuestionText(currentQuestion.getText());
-        if(currentQuestion.getMedia().getUrl()!=null){
+        if(currentQuestion.getMedia()!=null){
         setQuestionMedia(currentQuestion,imagepath) ;
         setQuestionImageView(currentQuestion,imageview);
         }
@@ -853,7 +852,7 @@ public class gui32b {
         if (questionCount == 1) {
             setAnswerGrade(answerList.get(0), answerGrade1);
             setAnswerChoice(answerList.get(0), answerChoice1);
-            if(answerList.get(0).getMedia().getUrl()!=null){
+            if(answerList.get(0).getMedia()!= null){
             setAnswerMedia(answerList.get(0),imagepath1);
             setAnsweImageView(answerList.get(0),imageview1);
             }
@@ -862,7 +861,7 @@ public class gui32b {
             setAnswerChoice(answerList.get(0), answerChoice1);
             setAnswerGrade(answerList.get(1), answerGrade2);
             setAnswerChoice(answerList.get(1), answerChoice2);
-            if(answerList.get(0).getMedia().getUrl()!=null){
+            if(answerList.get(0).getMedia() !=null){
                 setAnswerMedia(answerList.get(0),imagepath1);
                 setAnsweImageView(answerList.get(0),imageview1);
                 setAnswerMedia(answerList.get(1),imagepath2);
@@ -876,7 +875,7 @@ public class gui32b {
             setAnswerChoice(answerList.get(1), answerChoice2);
             setAnswerGrade(answerList.get(2), answerGrade3);
             setAnswerChoice(answerList.get(2), answerChoice3);
-            if(answerList.get(0).getMedia().getUrl()!=null){
+            if(answerList.get(0).getMedia() !=null){
                 setAnswerMedia(answerList.get(0),imagepath1);
                 setAnsweImageView(answerList.get(0),imageview1);
                 setAnswerMedia(answerList.get(1),imagepath2);
@@ -894,7 +893,7 @@ public class gui32b {
             setAnswerChoice(answerList.get(2), answerChoice3);
             setAnswerGrade(answerList.get(3), answerGrade4);
             setAnswerChoice(answerList.get(3), answerChoice4);
-            if(answerList.get(0).getMedia().getUrl()!=null){
+            if(answerList.get(0).getMedia() !=null){
                 setAnswerMedia(answerList.get(0),imagepath1);
                 setAnsweImageView(answerList.get(0),imageview1);
                 setAnswerMedia(answerList.get(1),imagepath2);
@@ -915,7 +914,7 @@ public class gui32b {
             setAnswerChoice(answerList.get(3), answerChoice4);
             setAnswerGrade(answerList.get(4), answerGrade5);
             setAnswerChoice(answerList.get(4), answerChoice5);
-            if(answerList.get(0).getMedia().getUrl()!=null){
+            if(answerList.get(0).getMedia() !=null){
                 setAnswerMedia(answerList.get(0),imagepath1);
                 setAnsweImageView(answerList.get(0),imageview1);
                 setAnswerMedia(answerList.get(1),imagepath2);
@@ -941,7 +940,7 @@ public class gui32b {
             setAnswerChoice(answerList.get(4), answerChoice5);
             setAnswerGrade(answerList.get(5), answerGrade6);
             setAnswerChoice(answerList.get(5), answerChoice6);
-            if(answerList.get(0).getMedia().getUrl()!=null){
+            if(answerList.get(0).getMedia() !=null){
                 setAnswerMedia(answerList.get(0),imagepath1);
                 setAnsweImageView(answerList.get(0),imageview1);
                 setAnswerMedia(answerList.get(1),imagepath2);
