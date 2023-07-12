@@ -154,15 +154,35 @@ public class gui73 {
         return answer;
     }
     private void setUpQuestion(int i) {
-        if (questions.get(i).getMedia() == null) {
+        List<Answer> answers = new ArrayList<>(questions.get(i).getAnswers());
+
+        if (questions.get(i).getMedia() == null && answers.get(0).getMedia() == null ) {
             FXMLLoader questionLoader = new FXMLLoader(getClass().getResource("guiquestion.fxml"));
             AnchorPane questionPane1 = makeDefaultGUI(i, questionLoader);
             questionContainer.getChildren().add(questionPane1);
-        } else {
+        } else if (questions.get(i).getMedia() != null && answers.get(0).getMedia() == null ){
             FXMLLoader questionLoader = new FXMLLoader(getClass().getResource("guiquestion2.fxml"));
             AnchorPane questionPane2 = makeDefaultGUI(i, questionLoader);
             insertMedia(questions.get(i), questionPane2, questionLoader);
             questionContainer.getChildren().add(questionPane2);
+        }
+        else if  (questions.get(i).getMedia() == null && answers.get(0).getMedia() != null ){
+            FXMLLoader questionLoader = new FXMLLoader(getClass().getResource("guiquestion3.fxml"));
+            AnchorPane questionPane3 = makeDefaultGUI(i, questionLoader);
+            guiquestion3 controller = questionLoader.getController();
+            controller.setImageViews(answers);
+            //cần hàm để đưa hình ảnh vào đáp án
+            questionContainer.getChildren().add(questionPane3);
+
+        }
+        else if (questions.get(i).getMedia() != null && answers.get(0).getMedia() != null ){
+            FXMLLoader questionLoader = new FXMLLoader(getClass().getResource("guiquestion4.fxml"));
+            AnchorPane questionPane4 = makeDefaultGUI(i, questionLoader);
+            // cần hàm  đap án
+            guiquestion4 controller = questionLoader.getController();
+            controller.setImageViews(answers);
+            insertMedia2(questions.get(i), questionPane4, questionLoader);
+            questionContainer.getChildren().add(questionPane4);
         }
     }
     private AnchorPane makeDefaultGUI(int i, FXMLLoader questionLoader){
@@ -214,13 +234,22 @@ public class gui73 {
         System.out.println("Loi : makeDefaultGUI");
         return null;
     }
+
     private  void insertMedia(Question question, AnchorPane questionPane2, FXMLLoader loader2){
         guiquestion2 controller = loader2.getController();
         MediaView mediaView = (MediaView) questionPane2.lookup("#mediaView");
         ImageView imageView = (ImageView) questionPane2.lookup("#imageView");
-        WebView gifView = (WebView) questionPane2.lookup("#gifView");
+        ImageView gifView = (ImageView) questionPane2.lookup("#gifView");
         controller.setQuestion(question);
     }
+    private  void insertMedia2(Question question, AnchorPane questionPane2, FXMLLoader loader4){
+        guiquestion4 controller = loader4.getController();
+        MediaView mediaView = (MediaView) questionPane2.lookup("#mediaView");
+        ImageView imageView = (ImageView) questionPane2.lookup("#imageView");
+        ImageView gifView = (ImageView) questionPane2.lookup("#gifView");
+        controller.setQuestion(question);
+    }
+
     @FXML
     private void backHome(Event event){
         try {
