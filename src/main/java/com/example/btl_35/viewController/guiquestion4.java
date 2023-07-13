@@ -226,6 +226,7 @@ public class guiquestion4 {
 
     private void setVideo(File contentFile) {
         imageView.setVisible(false);
+        replay.setVisible(true);
         Media media = new Media(contentFile.toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);

@@ -106,7 +106,7 @@ public class gui73 {
             BorderStroke borderStroke = new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, null);
             Border border = new Border(borderStroke);
             button.setBorder(border);
-            button.setFont(new Font(10));
+            button.setFont(new Font(8));
             button.setOnAction(event -> {
                 int questionIndex = Integer.parseInt(((Button)event.getSource()).getText()) - 1;
 

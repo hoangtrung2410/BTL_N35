@@ -9,7 +9,7 @@
 
 
 
-        <property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;databaseName=8888</property>
+        <property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;databaseName=BTL_oop</property>
 
 
         <property name="hibernate.connection.username">sa</property>
