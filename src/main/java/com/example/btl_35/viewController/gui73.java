@@ -156,33 +156,69 @@ public class gui73 {
     private void setUpQuestion(int i) {
         List<Answer> answers = new ArrayList<>(questions.get(i).getAnswers());
 
-        if (questions.get(i).getMedia() == null && answers.get(0).getMedia() == null ) {
-            FXMLLoader questionLoader = new FXMLLoader(getClass().getResource("guiquestion.fxml"));
-            AnchorPane questionPane1 = makeDefaultGUI(i, questionLoader);
+//        if (questions.get(i).getMedia() == null && answers.get(1).getMedia() == null ) {
+//            FXMLLoader questionLoader = new FXMLLoader(getClass().getResource("guiquestion.fxml"));
+//            AnchorPane questionPane1 = makeDefaultGUI(i, questionLoader);
+//            questionContainer.getChildren().add(questionPane1);
+//        } else if (questions.get(i).getMedia() != null && answers.get(1).getMedia() == null ){
+//            FXMLLoader questionLoader = new FXMLLoader(getClass().getResource("guiquestion2.fxml"));
+//            AnchorPane questionPane2 = makeDefaultGUI(i, questionLoader);
+//            insertMedia(questions.get(i), questionPane2, questionLoader);
+//            questionContainer.getChildren().add(questionPane2);
+//        }
+//        else if  (questions.get(i).getMedia() == null && answers.get(1).getMedia() != null ){
+//            FXMLLoader questionLoader = new FXMLLoader(getClass().getResource("guiquestion3.fxml"));
+//            AnchorPane questionPane3 = makeDefaultGUI(i, questionLoader);
+//            guiquestion3 controller = questionLoader.getController();
+//            controller.setImageViews(answers);
+//            //cần hàm để đưa hình ảnh vào đáp án
+//            questionContainer.getChildren().add(questionPane3);
+//
+//        }
+//        else if (questions.get(i).getMedia() != null && answers.get(1).getMedia() != null ){
+//            FXMLLoader questionLoader = new FXMLLoader(getClass().getResource("guiquestion4.fxml"));
+//            AnchorPane questionPane4 = makeDefaultGUI(i, questionLoader);
+//            // cần hàm  đap án
+//            guiquestion4 controller = questionLoader.getController();
+//            controller.setImageViews(answers);
+//            insertMedia2(questions.get(i), questionPane4, questionLoader);
+//            questionContainer.getChildren().add(questionPane4);
+//        }
+
+        if(answers.get(0).getMedia() == null){
+            if(questions.get(i).getMedia() == null){
+                FXMLLoader questionLoader = new FXMLLoader(getClass().getResource("guiquestion.fxml"));
+             AnchorPane questionPane1 = makeDefaultGUI(i, questionLoader);
             questionContainer.getChildren().add(questionPane1);
-        } else if (questions.get(i).getMedia() != null && answers.get(0).getMedia() == null ){
-            FXMLLoader questionLoader = new FXMLLoader(getClass().getResource("guiquestion2.fxml"));
+
+            }
+            else{
+                FXMLLoader questionLoader = new FXMLLoader(getClass().getResource("guiquestion2.fxml"));
             AnchorPane questionPane2 = makeDefaultGUI(i, questionLoader);
             insertMedia(questions.get(i), questionPane2, questionLoader);
             questionContainer.getChildren().add(questionPane2);
-        }
-        else if  (questions.get(i).getMedia() == null && answers.get(0).getMedia() != null ){
-            FXMLLoader questionLoader = new FXMLLoader(getClass().getResource("guiquestion3.fxml"));
+
+            }
+        }else{
+            if(questions.get(i).getMedia() == null){
+                FXMLLoader questionLoader = new FXMLLoader(getClass().getResource("guiquestion3.fxml"));
             AnchorPane questionPane3 = makeDefaultGUI(i, questionLoader);
             guiquestion3 controller = questionLoader.getController();
             controller.setImageViews(answers);
             //cần hàm để đưa hình ảnh vào đáp án
             questionContainer.getChildren().add(questionPane3);
 
-        }
-        else if (questions.get(i).getMedia() != null && answers.get(0).getMedia() != null ){
-            FXMLLoader questionLoader = new FXMLLoader(getClass().getResource("guiquestion4.fxml"));
+            }
+            else{
+                FXMLLoader questionLoader = new FXMLLoader(getClass().getResource("guiquestion4.fxml"));
             AnchorPane questionPane4 = makeDefaultGUI(i, questionLoader);
             // cần hàm  đap án
             guiquestion4 controller = questionLoader.getController();
             controller.setImageViews(answers);
             insertMedia2(questions.get(i), questionPane4, questionLoader);
             questionContainer.getChildren().add(questionPane4);
+
+            }
         }
     }
     private AnchorPane makeDefaultGUI(int i, FXMLLoader questionLoader){
@@ -223,7 +259,6 @@ public class gui73 {
                 checkBoxList.get(j).setText(answers.get(j).getChoice());
                 map.put(checkBoxList.get(j), answers.get(j));
             }
-
 
             // Thêm AnchorPane mới vào giao diện người dùng
             // (ví dụ: vào một VBox có tên là "questionContainer")
@@ -306,7 +341,9 @@ public class gui73 {
                     }
                 }
                 double finalMark = 0.0;
+                List<Double> checks =new ArrayList<>();
                 for (int i = 0; i < questions.size(); i++) {
+                    double grade;
                     int answerCount = 0;
                     // i as index of question in the questions list
                     // with each question, get the i-th anchor pane contain the answer
@@ -321,6 +358,8 @@ public class gui73 {
                     Answer Answer2 = processCheckBox(answer2);
                     Answer Answer3 = processCheckBox(answer3);
                     Answer Answer4 = processCheckBox(answer4);
+                    grade = calculateMark(Answer1, Answer2, Answer3, Answer4, currentQuestion);
+                    checks.add(grade);
                     // now calculate the mark for each question
                     finalMark += calculateMark(Answer1, Answer2, Answer3, Answer4, currentQuestion);
                 }
@@ -340,6 +379,13 @@ public class gui73 {
                     int index = 2 * i + 2;
                     FXMLLoader newloader = new FXMLLoader(getClass().getResource("answer.fxml"));
                     AnchorPane answerPane = newloader.load();
+                    if(checks.get(i) >0.0){
+                        answerPane.setStyle("-fx-background-color: rgb(0, 128, 0);");
+
+                    }else{
+                        answerPane.setStyle("-fx-background-color: rgb(255, 204, 153);");
+
+                    }
                     answer newcontroller = newloader.getController();
                     newcontroller.setCurrentQuestion(questions.get(i));
                     questionContainer.getChildren().add(index, answerPane);
