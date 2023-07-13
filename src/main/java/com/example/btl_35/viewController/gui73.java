@@ -133,16 +133,70 @@ public class gui73 {
     void finish(ActionEvent event) {
         finish2();
     }
+//    private Double calculateMark(Answer Answer1, Answer Answer2, Answer Answer3,Answer Answer4, Question question){
+//        double grade1 = (Answer1 == null ? 0.0 : Answer1.getGrade());
+//        double grade2 = (Answer2 == null ? 0.0 : Answer2.getGrade());
+//        double grade3 = (Answer3 == null ? 0.0 : Answer3.getGrade());
+//        double grade4 = (Answer4 == null ? 0.0 : Answer4.getGrade());
+//        double grade;
+//        if(grade1 >= 0 && grade2 >= 0 && grade3 >= 0 && grade4 >= 0){
+//            grade = grade1 + grade2 + grade3 + grade4;
+//        } else {
+//            grade = (grade1 < 0 ? grade1 : 0.0) + (grade2 < 0 ? grade2 : 0.0) + (grade3 < 0 ? grade3 : 0.0)+ (grade4 < 0 ? grade4 : 0.0);
+//        }
+//        return (question.getMark() == null ? 1.00 : question.getMark()) * grade;
+//    }
+
     private Double calculateMark(Answer Answer1, Answer Answer2, Answer Answer3,Answer Answer4, Question question){
+
+        List<Answer> answers = new ArrayList<>(4);
+
+        answers.add(Answer1); answers.add(Answer2); answers.add(Answer3); answers.add(Answer4);
+
         double grade1 = (Answer1 == null ? 0.0 : Answer1.getGrade());
+
         double grade2 = (Answer2 == null ? 0.0 : Answer2.getGrade());
+
         double grade3 = (Answer3 == null ? 0.0 : Answer3.getGrade());
+
         double grade4 = (Answer4 == null ? 0.0 : Answer4.getGrade());
-        double grade;
-        if(grade1 >= 0 && grade2 >= 0 && grade3 >= 0 && grade4 >= 0){
-            grade = grade1 + grade2 + grade3 + grade4;
+
+        double grade = 0.0;
+
+        int wrongAnswers = 0;
+
+        for(Answer answer : answers){
+
+            if (answer != null && answer.getGrade() <= 0){
+
+                wrongAnswers += 1;
+
+            }
+
+        }
+
+        if (wrongAnswers == 0){
+
+            for(Answer answer : answers){
+
+                if (answer != null){
+
+                    grade += answer.getGrade();
+
+                }
+
+            }
+
         } else {
-            grade = (grade1 < 0 ? grade1 : 0.0) + (grade2 < 0 ? grade2 : 0.0) + (grade3 < 0 ? grade3 : 0.0)+ (grade4 < 0 ? grade4 : 0.0);
+
+            for(Answer answer : answers){
+
+                if (answer != null && answer.getGrade() <= 0){
+
+                    grade += answer.getGrade();
+
+                }
+            }
         }
         return (question.getMark() == null ? 1.00 : question.getMark()) * grade;
     }
