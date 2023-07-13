@@ -141,6 +141,7 @@ import com.example.btl_35.entity.Answer;
 import com.example.btl_35.entity.Question;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -155,7 +156,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class guiquestion4 {
-
+    @FXML
+    private Button replay;
     @FXML
     private CheckBox answer1;
 
@@ -185,6 +187,7 @@ public class guiquestion4 {
 
     @FXML
     private MediaView mediaView;
+    private MediaPlayer mediaPlayer;
 
     @FXML
     private AnchorPane parentPane;
@@ -226,6 +229,7 @@ public class guiquestion4 {
         Media media = new Media(contentFile.toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
+        this.mediaPlayer = mediaPlayer;
     }
 
     private String getFileExtension(File file) {
@@ -265,16 +269,13 @@ public class guiquestion4 {
             imageView.setImage(null);
         }
     }
+    @FXML
+    void replayAction(ActionEvent event) {
+        if (mediaPlayer != null) {
+            mediaPlayer.seek(javafx.util.Duration.ZERO);
+            mediaPlayer.play();
+        }
+    }
 
-//    @FXML
-//    void replayAction(ActionEvent event) {
-//        MediaPlayer mediaPlayer = mediaView.getMediaPlayer();
-//        if (mediaPlayer != null) {
-//            mediaPlayer.seek(javafx.util.Duration.ZERO);
-//            mediaPlayer.play();
-//        }
-//    }
-
-    // Other methods and event handlers...
 
 }

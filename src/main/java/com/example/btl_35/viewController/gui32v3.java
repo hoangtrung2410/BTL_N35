@@ -33,9 +33,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class gui32v3 {
-    //    public void setCategoryName2(String categoryName2) {
-//        selectedcategory2.setText(categoryName2);
-//    }
     @FXML
     private Button deleteimage1;
 
@@ -265,12 +262,29 @@ public class gui32v3 {
                             System.out.println("Độ dài video hợp lệ: " + durationSeconds + " giây");
                             imagepath.setText(filePath);
                         } else {
+                            Alert alert = new Alert(Alert.AlertType.WARNING);
+                            alert.setTitle("Video không hợp lệ");
+                            alert.setHeaderText("Video có độ dài lớn hơn 10 giây");
+                            alert.setContentText("Vui lòng chọn một video có độ dài dưới 10 giây.");
+                            alert.showAndWait();
                             System.out.println("Độ dài video lớn hơn 10 giây.");
                         }
                     } else {
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("Video không hợp lệ");
+                        alert.setHeaderText("Không thể lấy được độ dài video.");
+                        alert.setContentText("Vui lòng chọn 1 video hợp lệ");
+                        alert.showAndWait();
                         System.out.println("Không thể lấy được độ dài video.");
                     }
                 } catch (IOException | InterruptedException e) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Video không hợp lệ");
+                    alert.setHeaderText("Không thể lấy được độ dài video.");
+                    alert.setContentText("Vui lòng chọn 1 video hợp lệ");
+                    alert.showAndWait();
+                    System.out.println("Không thể lấy được độ dài video.");
+                    System.out.println("Lỗi khi kiểm tra độ dài video.");
                     System.out.println("Lỗi khi kiểm tra độ dài video.");
                     e.printStackTrace();
                 }
@@ -289,7 +303,7 @@ public class gui32v3 {
         // Thiết lập tiêu đề cho hộp thoại chọn tệp tin
         fileChooser.setTitle("Chọn tệp tin");
         // Thiết lập bộ lọc cho hộp thoại chọn tệp tin
-        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.mp4","*.gif");
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.gif");
         fileChooser.getExtensionFilters().add(imageFilter);
         // Hiển thị hộp thoại chọn tệp tin và lấy đường dẫn được chọn
         selectedImageFile = fileChooser.showOpenDialog(stage);
@@ -311,7 +325,7 @@ public class gui32v3 {
         // Thiết lập tiêu đề cho hộp thoại chọn tệp tin
         fileChooser.setTitle("Chọn tệp tin");
         // Thiết lập bộ lọc cho hộp thoại chọn tệp tin
-        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.mp4","*.gif");
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.gif");
         fileChooser.getExtensionFilters().add(imageFilter);
         // Hiển thị hộp thoại chọn tệp tin và lấy đường dẫn được chọn
         selectedImageFile = fileChooser.showOpenDialog(stage);
@@ -333,7 +347,7 @@ public class gui32v3 {
         // Thiết lập tiêu đề cho hộp thoại chọn tệp tin
         fileChooser.setTitle("Chọn tệp tin");
         // Thiết lập bộ lọc cho hộp thoại chọn tệp tin
-        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.mp4","*.gif");
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.gif");
         fileChooser.getExtensionFilters().add(imageFilter);
         // Hiển thị hộp thoại chọn tệp tin và lấy đường dẫn được chọn
         selectedImageFile = fileChooser.showOpenDialog(stage);
@@ -355,7 +369,7 @@ public class gui32v3 {
         // Thiết lập tiêu đề cho hộp thoại chọn tệp tin
         fileChooser.setTitle("Chọn tệp tin");
         // Thiết lập bộ lọc cho hộp thoại chọn tệp tin
-        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.mp4","*.gif");
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.gif");
         fileChooser.getExtensionFilters().add(imageFilter);
         // Hiển thị hộp thoại chọn tệp tin và lấy đường dẫn được chọn
         selectedImageFile = fileChooser.showOpenDialog(stage);
@@ -378,7 +392,7 @@ public class gui32v3 {
         // Thiết lập tiêu đề cho hộp thoại chọn tệp tin
         fileChooser.setTitle("Chọn tệp tin");
         // Thiết lập bộ lọc cho hộp thoại chọn tệp tin
-        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.mp4","*.gif");
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.gif");
         fileChooser.getExtensionFilters().add(imageFilter);
         // Hiển thị hộp thoại chọn tệp tin và lấy đường dẫn được chọn
         selectedImageFile = fileChooser.showOpenDialog(stage);
@@ -401,7 +415,7 @@ public class gui32v3 {
         // Thiết lập tiêu đề cho hộp thoại chọn tệp tin
         fileChooser.setTitle("Chọn tệp tin");
         // Thiết lập bộ lọc cho hộp thoại chọn tệp tin
-        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.mp4","*.gif");
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.gif");
         fileChooser.getExtensionFilters().add(imageFilter);
         // Hiển thị hộp thoại chọn tệp tin và lấy đường dẫn được chọn
         selectedImageFile = fileChooser.showOpenDialog(stage);
