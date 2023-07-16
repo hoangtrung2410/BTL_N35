@@ -215,6 +215,7 @@ public class gui32v2 {
                             alert.setHeaderText("Video có độ dài lớn hơn 10 giây");
                             alert.setContentText("Vui lòng chọn một video có độ dài dưới 10 giây.");
                             alert.showAndWait();
+                            System.out.println(durationSeconds);
                             System.out.println("Độ dài video lớn hơn 10 giây.");
                         }
                     } else {

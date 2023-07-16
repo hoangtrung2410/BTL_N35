@@ -461,7 +461,7 @@ public class gui73 {
                     quiztime.setText(String.format("%02d:%02d:%02d", remainingSeconds / 3600, (remainingSeconds % 3600) / 60, remainingSeconds % 60));
                     if (remainingSeconds <= 0) {
                         timeline.stop();
-                        finish2();
+                        finish3();
                     }
                 }
             }));
@@ -471,6 +471,90 @@ public class gui73 {
             // set thoi gian mac dinh
             System.out.println("Quiz time null");
             quiztime.setText("00:00:00");
+        }
+    }
+    private void finish3(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("finishpane.fxml"));
+            AnchorPane finishpane = loader.load();
+            // stop thoi gian
+            if (currentQuiz.getLimit_Time() != null) {
+                timeline.stop();
+            }
+            quizPane.setVvalue(0.0);
+            // Cham diem
+            finishpane controller = loader.getController();
+            // get finish time
+            LocalTime finishLocalTime = LocalTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            String finishTime = finishLocalTime.format(formatter);
+            // get startTime
+            String startTime = this.startTime.format(formatter);
+            // get time taken
+            java.time.Duration duration = java.time.Duration.between(this.startTime, finishLocalTime);
+            LocalTime localTime = LocalTime.ofNanoOfDay(duration.toNanos());
+            String timeTaken = localTime.format(formatter);
+            // calculate mark
+            Double quizMark = 0.0;
+            for (Question question : questions) {
+                if (question.getMark() != null) {
+                    quizMark += question.getMark();
+                } else {
+                    quizMark += 1.0;
+                }
+            }
+            double finalMark = 0.0;
+            List<Double> checks =new ArrayList<>();
+            for (int i = 0; i < questions.size(); i++) {
+                double grade;
+                int answerCount = 0;
+                // i as index of question in the questions list
+                // with each question, get the i-th anchor pane contain the answer
+                AnchorPane currentPane = (AnchorPane) questionContainer.getChildren().get(i);
+                Question currentQuestion = questions.get(i);
+                // now we check the box and get checked answer
+                CheckBox answer1 = (CheckBox) currentPane.lookup("#answer1");
+                CheckBox answer2 = (CheckBox) currentPane.lookup("#answer2");
+                CheckBox answer3 = (CheckBox) currentPane.lookup("#answer3");
+                CheckBox answer4 = (CheckBox) currentPane.lookup("#answer4");
+                Answer Answer1 = processCheckBox(answer1);
+                Answer Answer2 = processCheckBox(answer2);
+                Answer Answer3 = processCheckBox(answer3);
+                Answer Answer4 = processCheckBox(answer4);
+                grade = calculateMark(Answer1, Answer2, Answer3, Answer4, currentQuestion);
+                checks.add(grade);
+                // now calculate the mark for each question
+                finalMark += calculateMark(Answer1, Answer2, Answer3, Answer4, currentQuestion);
+            }
+            finalMark = ((int)(finalMark * 10)) / 10.0;
+            String mark = finalMark + "/" + quizMark;
+
+            // calculate grade
+            double gradee = (double) Math.round(finalMark / quizMark * 100) / 10;
+            String grade = Double.toString(gradee) + "/10.0";
+
+            controller.setInfo(finishTime, startTime, timeTaken, grade, mark);
+
+            questionContainer.getChildren().add(0, finishpane);
+            finishQuiz.setVisible(false);
+            backHome.setVisible(true);
+            for (int i = 0; i < questions.size(); i++) {
+                int index = 2 * i + 2;
+                FXMLLoader newloader = new FXMLLoader(getClass().getResource("answer.fxml"));
+                AnchorPane answerPane = newloader.load();
+                if(checks.get(i) >0.0){
+                    answerPane.setStyle("-fx-background-color: rgb(0, 128, 0);");
+
+                }else{
+                    answerPane.setStyle("-fx-background-color: rgb(255, 204, 153);");
+
+                }
+                answer newcontroller = newloader.getController();
+                newcontroller.setCurrentQuestion(questions.get(i));
+                questionContainer.getChildren().add(index, answerPane);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
