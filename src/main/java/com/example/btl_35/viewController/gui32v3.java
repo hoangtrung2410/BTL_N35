@@ -270,21 +270,21 @@ public class gui32v3 {
                             System.out.println("Độ dài video lớn hơn 10 giây.");
                         }
                     } else {
-                        Alert alert = new Alert(Alert.AlertType.WARNING);
-                        alert.setTitle("Video không hợp lệ");
-                        alert.setHeaderText("Không thể lấy được độ dài video.");
-                        alert.setContentText("Vui lòng chọn 1 video hợp lệ");
-                        alert.showAndWait();
+//                        Alert alert = new Alert(Alert.AlertType.WARNING);
+//                        alert.setTitle("Video không hợp lệ");
+//                        alert.setHeaderText("Không thể lấy được độ dài video.");
+//                        alert.setContentText("Vui lòng chọn 1 video hợp lệ");
+//                        alert.showAndWait();
                         System.out.println("Không thể lấy được độ dài video.");
                     }
                 } catch (IOException | InterruptedException e) {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Video không hợp lệ");
-                    alert.setHeaderText("Không thể lấy được độ dài video.");
-                    alert.setContentText("Vui lòng chọn 1 video hợp lệ");
-                    alert.showAndWait();
-                    System.out.println("Không thể lấy được độ dài video.");
-                    System.out.println("Lỗi khi kiểm tra độ dài video.");
+//                    alert.setTitle("Video không hợp lệ");
+//                    alert.setHeaderText("Không thể lấy được độ dài video.");
+//                    alert.setContentText("Vui lòng chọn 1 video hợp lệ");
+//                    alert.showAndWait();
+//                    System.out.println("Không thể lấy được độ dài video.");
+//                    System.out.println("Lỗi khi kiểm tra độ dài video.");
                     System.out.println("Lỗi khi kiểm tra độ dài video.");
                     e.printStackTrace();
                 }
