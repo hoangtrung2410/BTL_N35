@@ -288,7 +288,7 @@ public class gui32b {
         // Thiết lập tiêu đề cho hộp thoại chọn tệp tin
         fileChooser.setTitle("Chọn tệp tin");
         // Thiết lập bộ lọc cho hộp thoại chọn tệp tin
-        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.mp4","*.gif");
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.gif");
         fileChooser.getExtensionFilters().add(imageFilter);
         // Hiển thị hộp thoại chọn tệp tin và lấy đường dẫn được chọn
         selectedImageFile = fileChooser.showOpenDialog(stage);
@@ -310,7 +310,7 @@ public class gui32b {
         // Thiết lập tiêu đề cho hộp thoại chọn tệp tin
         fileChooser.setTitle("Chọn tệp tin");
         // Thiết lập bộ lọc cho hộp thoại chọn tệp tin
-        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.mp4","*.gif");
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.gif");
         fileChooser.getExtensionFilters().add(imageFilter);
         // Hiển thị hộp thoại chọn tệp tin và lấy đường dẫn được chọn
         selectedImageFile = fileChooser.showOpenDialog(stage);
@@ -332,7 +332,7 @@ public class gui32b {
         // Thiết lập tiêu đề cho hộp thoại chọn tệp tin
         fileChooser.setTitle("Chọn tệp tin");
         // Thiết lập bộ lọc cho hộp thoại chọn tệp tin
-        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.mp4","*.gif");
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.gif");
         fileChooser.getExtensionFilters().add(imageFilter);
         // Hiển thị hộp thoại chọn tệp tin và lấy đường dẫn được chọn
         selectedImageFile = fileChooser.showOpenDialog(stage);
@@ -354,7 +354,7 @@ public class gui32b {
         // Thiết lập tiêu đề cho hộp thoại chọn tệp tin
         fileChooser.setTitle("Chọn tệp tin");
         // Thiết lập bộ lọc cho hộp thoại chọn tệp tin
-        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.mp4","*.gif");
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.gif");
         fileChooser.getExtensionFilters().add(imageFilter);
         // Hiển thị hộp thoại chọn tệp tin và lấy đường dẫn được chọn
         selectedImageFile = fileChooser.showOpenDialog(stage);
@@ -377,7 +377,7 @@ public class gui32b {
         // Thiết lập tiêu đề cho hộp thoại chọn tệp tin
         fileChooser.setTitle("Chọn tệp tin");
         // Thiết lập bộ lọc cho hộp thoại chọn tệp tin
-        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.mp4","*.gif");
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.gif");
         fileChooser.getExtensionFilters().add(imageFilter);
         // Hiển thị hộp thoại chọn tệp tin và lấy đường dẫn được chọn
         selectedImageFile = fileChooser.showOpenDialog(stage);
@@ -400,7 +400,7 @@ public class gui32b {
         // Thiết lập tiêu đề cho hộp thoại chọn tệp tin
         fileChooser.setTitle("Chọn tệp tin");
         // Thiết lập bộ lọc cho hộp thoại chọn tệp tin
-        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.mp4","*.gif");
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg","*.gif");
         fileChooser.getExtensionFilters().add(imageFilter);
         // Hiển thị hộp thoại chọn tệp tin và lấy đường dẫn được chọn
         selectedImageFile = fileChooser.showOpenDialog(stage);
